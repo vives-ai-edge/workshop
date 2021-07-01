@@ -51,14 +51,22 @@ module.exports = {
     docsBranch: 'master',
     sidebarDepth: 1,
     sidebar: [
-      // {
-      //   title: 'chapter 1',   // required
-      //   collapsable: true, // optional, defaults to true
-      //   sidebarDepth: 0,    // optional, defaults to 1
-      //   children: [
-      //     '/chapters/01-demo/',
-      //   ]
-      // },
+      {
+        title: 'Foo',   // required
+        collapsable: true, // optional, defaults to true
+        sidebarDepth: 0,    // optional, defaults to 1
+        children: [
+          '/foo/',
+        ]
+      },
+      {
+        title: 'Bar',   // required
+        collapsable: true, // optional, defaults to true
+        sidebarDepth: 0,    // optional, defaults to 1
+        children: [
+          '/bar/',
+        ]
+      },
     ]
   },
 }
