@@ -8,20 +8,20 @@ Instead of using mathematic functions to calculate the sine of x we can train a 
 
 ## Steps
 1. Obtain a simple dataset
-* Generate data
-* Add noise
-* Split the data
+   * Generate data
+   * Add noise
+   * Split the data
 2. Train a small model
-* Design the neural network
-* Train the neural network
-* Plot and observe the metrics
+   * Design the neural network
+   * Train the neural network
+   * Plot and observe the metrics
 3. Train a larger model
-* Design the neural network
-* Train the neural network
-* Plot and observe the metrics
+   * Design the neural network
+   * Train the neural network
+   * Plot and observe the metrics
 4. Generate a Tensorflow Lite model
-* Generate model without quantisation
-* Generate model with quantisation
-* Compare the model performance
+   * Generate model without quantisation
+   * Generate model with quantisation
+   * Compare the model performance
 5. Generate a Tensorflow Lite for Microcontrollers model
 6. Deploy to a Microcontroller
