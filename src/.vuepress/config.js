@@ -52,19 +52,37 @@ module.exports = {
     sidebarDepth: 1,
     sidebar: [
       {
-        title: 'Foo',   // required
+        title: 'Introduction',   // required
         collapsable: true, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
-          '/foo/',
+          '/01-introduction/01-hello-world/',
+          '/01-introduction/02-training-a-model/',
+          '/01-introduction/03-run-inference/',
         ]
       },
       {
-        title: 'Bar',   // required
+        title: 'AB Writing',   // required
         collapsable: true, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
-          '/bar/',
+          '/02-ab-writing/01-edge-impulse/',
+          '/02-ab-writing/02-creating-a-project/',
+          '/02-ab-writing/03-inspecting-firmware/',
+          '/02-ab-writing/04-connecting-a-device/',
+          '/02-ab-writing/05-capturing-and-importing-data/',
+          '/02-ab-writing/06-creating-an-impulse/',
+          '/02-ab-writing/07-feature-generation/',
+          '/02-ab-writing/08-inference/',
+        ]
+      },
+      {
+        title: 'Lifz Classification',
+        collapsable: true,
+        sidebarDepth: 0,
+        children: [
+          '/03-lifz-classification/01-lifz-classification/',
+          '/03-lifz-classification/02-deployment/',
         ]
       },
     ]
