@@ -77,12 +77,12 @@ module.exports = {
         ]
       },
       {
-        title: 'Lifz Classification',
+        title: 'Live Classification',
         collapsable: true,
         sidebarDepth: 0,
         children: [
-          '/03-lifz-classification/01-lifz-classification/',
-          '/03-lifz-classification/02-deployment/',
+          '/03-live-classification/01-live-classification/',
+          '/03-live-classification/02-deployment/',
         ]
       },
     ]
