@@ -15,7 +15,35 @@ sudo apt install python3 python3-pip -y
 
 pip3 install jupyter
 
-source .
+sudo pip uninstall tensorflow
+sudo pip3 uninstall tensorflow
+# install the dependencies (if not already onboard)
+sudo apt-get install gfortran -y
+sudo apt-get install libhdf5-dev libc-ares-dev libeigen3-dev -y
+sudo apt-get install libatlas-base-dev libopenblas-dev libblas-dev -y
+sudo apt-get install liblapack-dev -y
+# upgrade setuptools 47.1.1 -> 50.3.2
+sudo -H pip3 install --upgrade setuptools
+sudo -H pip3 install pybind11
+sudo -H pip3 install Cython==0.29.21
+# install h5py with Cython version 0.29.21 (± 6 min @1950 MHz)
+sudo -H pip3 install h5py==2.10.0
+# install gdown to download from Google drive
+pip3 install gdown
+
+source ~/.profile 
+
+# wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-aarch64.sh -O ~/miniconda.sh
+# bash ~/miniconda.sh -b -p $HOME/miniconda
+# eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+
+sudo apt install gcc-arm-none-eabi mercurial -y
+pip3 install mbed-cli
+
+
+gdown https://drive.google.com/uc?id=1BLXP7RKEfTp9fxbmI8Qu2FdhU7NUxcwV
+
+sudo -H pip3 install tensorflow-2.6.0-cp37-cp37m-linux_aarch64.whl
 
 
 echo "-----------------------------------------------------------"
