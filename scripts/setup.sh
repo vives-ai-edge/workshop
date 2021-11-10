@@ -38,6 +38,12 @@ source ~/.profile
 # eval "$($HOME/miniconda/bin/conda shell.bash hook)"
 
 sudo apt install gcc-arm-none-eabi mercurial -y
+apt-get install python3-venv -y
+
+python3 -m venv ~/.venv/mbed
+
+source ~/.venv/mbed/activate
+
 pip3 install mbed-cli
 
 
