@@ -11,8 +11,12 @@ echo "                                                                          
 
 sudo apt update
 sudo apt upgrade -y
+
+# install python3 (needs to be python 3.7 for tensorflow)
 sudo apt install python3 python3-pip -y
 
+# Install jupyter notebook
+sudo apt install libffi-dev -y
 pip3 install jupyter
 
 sudo pip uninstall tensorflow
@@ -29,33 +33,41 @@ sudo -H pip3 install Cython==0.29.21
 # install h5py with Cython version 0.29.21 (± 6 min @1950 MHz)
 sudo -H pip3 install h5py==2.10.0
 # install gdown to download from Google drive
-pip3 install gdown
 
-source ~/.profile 
-
-# wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-aarch64.sh -O ~/miniconda.sh
-# bash ~/miniconda.sh -b -p $HOME/miniconda
-# eval "$($HOME/miniconda/bin/conda shell.bash hook)"
-
-sudo apt install gcc-arm-none-eabi mercurial -y
-apt-get install python3-venv -y
-
-python3 -m venv ~/.venv/mbed
-
-source ~/.venv/mbed/activate
-
-pip3 install mbed-cli
-
+pip3 install numpy==1.19.5
+pip3 install matplotlib pandas
 
 # gdown https://drive.google.com/uc?id=1BLXP7RKEfTp9fxbmI8Qu2FdhU7NUxcwV
 
 # sudo -H pip3 install tensorflow-2.6.0-cp37-cp37m-linux_aarch64.whl
+pip3 install gdown
+
+source ~/.profile 
 
 # download the wheel
 gdown https://drive.google.com/uc?id=1WDG8Rbi0ph0sQ6TtD3ZGJdIN_WAnugLO
 # install TensorFlow 2.4.1 (± 68 min @1950 MHz)
 sudo -H pip3 install tensorflow-2.4.1-cp37-cp37m-linux_aarch64.whl
 
+# wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-aarch64.sh -O ~/miniconda.sh
+# bash ~/miniconda.sh -b -p $HOME/miniconda
+# eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+
+sudo apt install mercurial -y
+
+# sudo apt install gcc-arm-none-eabi -y
+wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
+tar xjvf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 -C /usr/share/bin/
+sudo cp -r gcc-arm-none-eabi-9-2020-q2-update/* /usr/
+sudo rm -r gcc-arm-none-eabi-9-2020-q2-update
+
+sudo apt-get install python3-venv -y
+
+python3 -m venv ~/.venv/mbed
+
+source ~/.venv/mbed/activate
+
+pip3 install mbed-cli
 
 echo "-----------------------------------------------------------"
 echo " Done !"
