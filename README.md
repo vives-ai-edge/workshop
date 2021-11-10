@@ -4,6 +4,12 @@
 
 Course materials for AI@EDGE workshop.
 
+## Install software packages
+
+Setup script to add default users to Linux instances. It will create the users, add a password and add theire public keys.
+
+bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
+
 ## Installation
 
 Clone the project and run the following npm command:
