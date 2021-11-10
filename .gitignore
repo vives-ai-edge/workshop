@@ -2,6 +2,6 @@ node_modules/
 dist/
 # Local Netlify folder
 .netlify
-src/01-introduction/01-hello-world/tensorflow-lite-micro-hello-world-mbed/.git
-src/02-ab-writing/04-connecting-a-device/accelero-data-forwarder/.git
-src/03-live-classification/02-deployment/example-standalone-inferencing-mbed/.git
+# src/01-introduction/01-hello-world/tensorflow-lite-micro-hello-world-mbed/.git
+# src/02-ab-writing/04-connecting-a-device/accelero-data-forwarder/.git
+# src/03-live-classification/02-deployment/example-standalone-inferencing-mbed/.git
