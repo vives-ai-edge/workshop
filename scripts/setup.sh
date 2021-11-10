@@ -65,7 +65,7 @@ sudo apt-get install python3-venv -y
 
 python3 -m venv ~/.venv/mbed
 
-source ~/.venv/mbed/activate
+source ~/.venv/mbed/bin/activate
 
 pip3 install mbed-cli
 
