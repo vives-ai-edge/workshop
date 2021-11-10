@@ -57,7 +57,7 @@ sudo apt install mercurial -y
 
 # sudo apt install gcc-arm-none-eabi -y
 wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
-tar xjvf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 -C /usr/share/bin/
+tar xjvf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 # -C /usr/share/bin/
 sudo cp -r gcc-arm-none-eabi-9-2020-q2-update/* /usr/
 sudo rm -r gcc-arm-none-eabi-9-2020-q2-update
 
