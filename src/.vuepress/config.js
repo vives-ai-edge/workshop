@@ -8,8 +8,8 @@ module.exports = {
       // includes all files in `sourceDir`
       // ignore dotfiles and markdown
       'vuepress-plugin-public-files', {
-        from: 'files',
-        to: 'files',
+        from: '../scripts/setup.sh',
+        to: './',
       }
     ],
     ['vuepress-plugin-container', {
