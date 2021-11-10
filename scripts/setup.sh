@@ -41,9 +41,14 @@ sudo apt install gcc-arm-none-eabi mercurial -y
 pip3 install mbed-cli
 
 
-gdown https://drive.google.com/uc?id=1BLXP7RKEfTp9fxbmI8Qu2FdhU7NUxcwV
+# gdown https://drive.google.com/uc?id=1BLXP7RKEfTp9fxbmI8Qu2FdhU7NUxcwV
 
-sudo -H pip3 install tensorflow-2.6.0-cp37-cp37m-linux_aarch64.whl
+# sudo -H pip3 install tensorflow-2.6.0-cp37-cp37m-linux_aarch64.whl
+
+# download the wheel
+gdown https://drive.google.com/uc?id=1WDG8Rbi0ph0sQ6TtD3ZGJdIN_WAnugLO
+# install TensorFlow 2.4.1 (± 68 min @1950 MHz)
+sudo -H pip3 install tensorflow-2.4.1-cp37-cp37m-linux_aarch64.whl
 
 
 echo "-----------------------------------------------------------"
