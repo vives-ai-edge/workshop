@@ -70,6 +70,8 @@ source ~/.venv/mbed/bin/activate
 
 pip3 install mbed-cli
 
+sudo cp mbed-cli /home/pi/Desktop
+
 echo "-----------------------------------------------------------"
 echo " Done !"
 echo "-----------------------------------------------------------"
