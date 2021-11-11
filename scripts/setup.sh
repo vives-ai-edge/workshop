@@ -18,6 +18,7 @@ sudo apt install python3 python3-pip -y
 # Install jupyter notebook
 sudo apt install libffi-dev -y
 sudo -H pip3 install jupyter
+sudo -H pip3 install pygments==2.4.1
 
 sudo pip uninstall tensorflow
 sudo pip3 uninstall tensorflow
