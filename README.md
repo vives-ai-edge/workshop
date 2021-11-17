@@ -31,8 +31,7 @@ Necessary hardware to do the workshop:
 
 ## Project files
 
-All project files can be clone from the repositories of the AI@EDGE project.
-'https://github.com/vives-ai-edge/accelero-data-forwarder.git'
+All project files can be cloned from the repositories of the AI@EDGE workshop.
 
 ## Issues
 
