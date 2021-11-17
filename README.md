@@ -27,6 +27,8 @@ Necessary hardware to do the workshop:
 - STM Sensortile with 
 - Mounting system to mount the Sensortile to a pen (3D printed holder)
 
+![Workshop hardware setup](/img/workshop_setup.jpg)
+
 ## Project files
 
 All project files can be clone from the repositories of the AI@EDGE project.
