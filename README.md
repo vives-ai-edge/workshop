@@ -4,31 +4,33 @@
 
 Course materials for AI@EDGE workshop.
 
+## Raspberry Pi OS image
+
+This workshop is optimised to run on a Raspberry Pi 400 or any other Raspberry Pi 4 device.
+Make sure to install the 64-bit Raspberry OS (Buster version from 2021.05.07).
+The image can be downloaded [here](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip).
+Use Win32DiskImager or BalenaEtcher to flash the SD card.
+
 ## Install software packages
 
-Setup script to add default users to Linux instances. It will create the users, add a password and add theire public keys.
+Setup script to install all requirements and dependencies to do the AI@EDGE workshop.
 
 ```shell
 bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
 ```
 
-## Installation
+## Hardware requirements
 
-Clone the project and run the following npm command:
+Necessary hardware to do the workshop:
+- Raspberry Pi with Screen, Mouse, Keyboard, SD card with the correct OS
+- Nucleo-L476RG or any other STM board with programmer
+- STM Sensortile with 
+- Mounting system to mount the Sensortile to a pen (3D printed holder)
 
-```shell
-npm install
-```
+## Project files
 
-## Development
-
-To start developing you can start up a webserver with the flowing command:
-
-```shell
-npm run dev
-```
-
-You can now view the result in your webbrowser at [`http://localhost:8080/`](http://localhost:8080/)
+All project files can be clone from the repositories of the AI@EDGE project.
+'https://github.com/vives-ai-edge/accelero-data-forwarder.git'
 
 ## Issues
 
