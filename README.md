@@ -13,7 +13,7 @@ Use Win32DiskImager or BalenaEtcher to flash the SD card.
 
 ## Install software packages
 
-Setup script to install all requirements and dependencies to do the AI@EDGE workshop.
+Setup script to install all requirements and dependencies to do the AI@EDGE workshop. Make sure you have an internet connection when doing this!
 
 ```shell
 bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
