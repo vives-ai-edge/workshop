@@ -6,7 +6,23 @@ Source: TinyML (Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-P
 We want to calculate the sine of x and use its output to control the timing of a flashing LED on our microcontroller.
 Instead of using mathematic functions to calculate the sine of x we can train a model that takes x (going from 0 to 2&pi;) and outputs the corresponding sine value (which lays between -1 and 1).
 
+## Prerequisites
+
+Open a Jupyter-Notebook instance using the command line and typing:
+
+```shell
+jupyter-notebook
+```
+
+If this doesn't work, try a reboot or typing `source ~/.profile` and try again.
+
+The console should give you a URL with a token attached to it where the notebook is located. Open this URL with Chromium.
+Browse to the folder `~/Documents/workshop/src/01-introduction/01-hello-world/Jupyter TinyML` and open the file `train_hello_world_model.ipynb`.
+
 ## Steps
+
+An overview is given of the steps that are taken to create the dataset, train the model and export the model parameters. A more in-depth explanation of the code and the functions is embedded in the Jupyter Notebook.
+
 1. Obtain a simple dataset
    * Generate data
    * Add noise
@@ -24,4 +40,4 @@ Instead of using mathematic functions to calculate the sine of x we can train a 
    * Generate model with quantisation
    * Compare the model performance
 5. Generate a Tensorflow Lite for Microcontrollers model
-6. Deploy to a Microcontroller
+6. [Deploy to a Microcontroller](../02-training-a-model/index.md)
