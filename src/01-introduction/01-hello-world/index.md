@@ -23,6 +23,8 @@ Browse to the folder `~/Documents/workshop/src/01-introduction/01-hello-world/Ju
 
 An overview is given of the steps that are taken to create the dataset, train the model and export the model parameters. A more in-depth explanation of the code and the functions is embedded in the Jupyter Notebook.
 
+One can run the whole notebook by using the >> symbol, or by going through it step by step by pressing `ctrl+Enter`.
+
 1. Obtain a simple dataset
    * Generate data
    * Add noise
@@ -41,3 +43,5 @@ An overview is given of the steps that are taken to create the dataset, train th
    * Compare the model performance
 5. Generate a Tensorflow Lite for Microcontrollers model
 6. [Deploy to a Microcontroller](../02-training-a-model/index.md)
+
+The training dataset can be adjusted to your liking, but keep in mind that the program running on the microcontroller will have to be adjusted accordingly!
