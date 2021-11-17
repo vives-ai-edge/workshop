@@ -20,6 +20,8 @@ Setup script to install all requirements and dependencies to do the AI@EDGE work
 bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
 ```
 
+**Note: some parts of the script can take quite a while (installation of setup.py of h5py), this is normal.**
+
 ## Hardware requirements
 
 Necessary hardware to do the workshop:
