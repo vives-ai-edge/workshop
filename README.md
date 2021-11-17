@@ -23,8 +23,8 @@ bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
 
 Necessary hardware to do the workshop:
 - Raspberry Pi with Screen, Mouse, Keyboard, SD card with the correct OS
-- Nucleo-L476RG or any other STM board with programmer
-- STM Sensortile with 
+- Nucleo-L476RG or any other STM board with programmer and USB cable
+- STM Sensortile with programming cable, cradle, USB cable
 - Mounting system to mount the Sensortile to a pen (3D printed holder)
 
 ![Workshop hardware setup](/img/workshop_setup.jpg)
