@@ -23,7 +23,7 @@ Browse to the folder `~/Documents/workshop/src/01-introduction/01-hello-world/Ju
 
 An overview is given of the steps that are taken to create the dataset, train the model and export the model parameters. A more in-depth explanation of the code and the functions is embedded in the Jupyter Notebook.
 
-One can run the whole notebook by using the >> symbol, or by going through it step by step by pressing `ctrl+Enter`.
+One can run the whole notebook by using the ![Run all](/img/jupyter_arrow.png) symbol, or by going through it step by step by pressing `ctrl+Enter`.
 
 1. Obtain a simple dataset
    * Generate data
