@@ -31,7 +31,7 @@ Necessary hardware to do the workshop:
 
 ## Project files
 
-All project files can be cloned from the repositories of the AI@EDGE workshop.
+All project files can be found in the repository of the AI@EDGE workshop. The files are cloned in the "Documents" directory when running the installation script.
 
 ## Issues
 
