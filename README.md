@@ -28,7 +28,7 @@ Necessary hardware to do the workshop:
 - Raspberry Pi with Screen, Mouse, Keyboard, SD card with the correct OS
 - Nucleo-L476RG or any other STM board with programmer and USB cable
 - STM Sensortile with programming cable, cradle, USB cable
-- Mounting system to mount the Sensortile to a pen (3D printed holder)
+- Mounting system to mount the Sensortile to a pen ([3D printed holder](https://github.com/vives-ai-edge/AB-writing-cradle))
 
 ![Workshop hardware setup](/img/workshop_setup.jpg)
 
