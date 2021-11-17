@@ -10,6 +10,7 @@ This workshop is optimised to run on a Raspberry Pi 400 or any other Raspberry P
 Make sure to install the 64-bit Raspberry OS (Buster version from 2021.05.07).
 The image can be downloaded [here](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip).
 Use Win32DiskImager or BalenaEtcher to flash the SD card.
+Change the keyboard layout to your preference, in the workshop case: French.
 
 ## Install software packages
 
