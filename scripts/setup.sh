@@ -12,6 +12,8 @@ echo "                                                                          
 sudo apt update
 sudo apt upgrade -y
 
+sudo apt install git -y
+
 # install python3 (needs to be python 3.7 for tensorflow)
 sudo apt install python3 python3-pip -y
 
@@ -88,6 +90,17 @@ sudo apt-get install -y nodejs
 sudo npm install -g npm
 
 sudo npm install -g edge-impulse-cli
+
+git clone
+
+# Install workshop materials
+
+sudo mkdir /home/pi/workshop-ai-edge
+cd /home/pi/workshop-ai-edge
+
+git clone https://github.com/sillevl/tensorflow-lite-micro-hello-world-mbed.git
+git clone https://github.com/vives-ai-edge/accelero-data-forwarder.git
+git clone https://github.com/edgeimpulse/example-standalone-inferencing-mbed.git
 
 
 echo "-----------------------------------------------------------"
