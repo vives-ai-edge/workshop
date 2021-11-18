@@ -97,6 +97,7 @@ git clone
 # Install workshop materials
 
 sudo mkdir /home/pi/workshop-ai-edge
+sudo chown pi:pi /home/pi/workshop-ai-edge
 cd /home/pi/workshop-ai-edge
 
 git clone https://github.com/sillevl/tensorflow-lite-micro-hello-world-mbed.git
