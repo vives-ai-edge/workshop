@@ -36,7 +36,7 @@ All project files can be found in the repository of the AI@EDGE workshop. The fi
 
 ## Getting started
 
-We are getting started with a small example which goes through all the steps from data creation to running your model on a microcontroller in the [introduction](/01-hello-world).
+We are getting started with a small example which goes through all the steps from data creation to running your model on a microcontroller in the [introduction](/01-introduction/01-hello-world/).
 
 ## Issues
 
