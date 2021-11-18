@@ -112,28 +112,27 @@ mbed deploy
 cd mbed-os
 pip3 install -r requirements.txt
 cd ..
+mbed config root .
 mbed target NUCLEO_L476RG
 mbed toolchain GCC_ARM
-
-
 
 cd /home/pi/workshop-ai-edge/accelero-data-forwarder
 mbed deploy
 cd mbed-os
 pip3 install -r requirements.txt
 cd ..
+mbed config root .
 mbed target NUCLEO_L476RG
 mbed toolchain GCC_ARM
-
 
 cd /home/pi/workshop-ai-edge/example-standalone-inferencing-mbed
 mbed deploy
 cd mbed-os
 pip3 install -r requirements.txt
 cd ..
+mbed config root .
 mbed target NUCLEO_L476RG
 mbed toolchain GCC_ARM
-
 
 echo "-----------------------------------------------------------"
 echo " Done !"
