@@ -16,6 +16,7 @@ sudo apt install git -y
 
 # install python3 (needs to be python 3.7 for tensorflow)
 sudo apt install python3 python3-pip -y
+sudo -H pip3 install --upgrade pip
 
 # Install jupyter notebook
 sudo apt install libffi-dev -y
@@ -73,6 +74,8 @@ source ~/.venv/mbed/bin/activate
 
 pip3 install mbed-cli
 
+mbed config --global toolchain GCC_ARM
+
 cat > /home/pi/Desktop/mbed-cli <<EOF
 [Desktop Entry]
 Comment=mbed-cli in venv terminal
@@ -92,17 +95,44 @@ sudo npm install -g npm
 
 sudo npm install -g edge-impulse-cli
 
-git clone
-
 # Install workshop materials
 
 sudo mkdir /home/pi/workshop-ai-edge
 sudo chown pi:pi /home/pi/workshop-ai-edge
 cd /home/pi/workshop-ai-edge
 
-git clone https://github.com/sillevl/tensorflow-lite-micro-hello-world-mbed.git
+git clone https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbed.git
 git clone https://github.com/vives-ai-edge/accelero-data-forwarder.git
 git clone https://github.com/edgeimpulse/example-standalone-inferencing-mbed.git
+
+source $HOME/.venv/mbed/bin/activate
+cd /home/pi/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed
+git checkout sensortile
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
+
+
+
+cd /home/pi/workshop-ai-edge/accelero-data-forwarder
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
+
+
+cd /home/pi/workshop-ai-edge/example-standalone-inferencing-mbed
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
 
 
 echo "-----------------------------------------------------------"
