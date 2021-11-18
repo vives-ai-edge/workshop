@@ -80,6 +80,15 @@ Type=Application
 Icon=/usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
 EOF
 
+# Install nodejs
+
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+sudo npm install -g npm
+
+sudo npm install -g edge-impulse-cli
+
 
 echo "-----------------------------------------------------------"
 echo " Done !"
