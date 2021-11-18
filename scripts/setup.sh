@@ -63,6 +63,7 @@ wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-n
 tar xjvf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 # -C /usr/share/bin/
 sudo cp -r gcc-arm-none-eabi-9-2020-q2-update/* /usr/
 sudo rm -r gcc-arm-none-eabi-9-2020-q2-update
+sudo rm gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
 
 sudo apt-get install python3-venv -y
 
