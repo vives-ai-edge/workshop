@@ -34,6 +34,10 @@ Necessary hardware to do the workshop:
 
 All project files can be found in the repository of the AI@EDGE workshop. The files are cloned in the "Documents" directory when running the installation script.
 
+## Getting started
+
+We are getting started with a small example which goes through all the steps from data creation to running your model on a microcontroller in the [introduction](/01-hello-world).
+
 ## Issues
 
 Feel free to submit issues and enhancement requests.
