@@ -70,7 +70,16 @@ source ~/.venv/mbed/bin/activate
 
 pip3 install mbed-cli
 
-sudo cp mbed-cli /home/pi/Desktop
+cat > /home/pi/Desktop/mbed-cli <<EOF
+[Desktop Entry]
+Comment=mbed-cli in venv terminal
+Terminal=false
+Name=mbed-cli
+Exec=lxterminal -e "echo This is a console with mbed-cli enabled;source $HOME/.venv/mbed/bin/activate;$SHELL"
+Type=Application
+Icon=/usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
+EOF
+
 
 echo "-----------------------------------------------------------"
 echo " Done !"
