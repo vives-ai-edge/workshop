@@ -12,8 +12,11 @@ echo "                                                                          
 sudo apt update
 sudo apt upgrade -y
 
+sudo apt install git -y
+
 # install python3 (needs to be python 3.7 for tensorflow)
 sudo apt install python3 python3-pip -y
+sudo -H pip3 install --upgrade pip
 
 # Install jupyter notebook
 sudo apt install libffi-dev -y
@@ -61,6 +64,7 @@ wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-n
 tar xjvf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 # -C /usr/share/bin/
 sudo cp -r gcc-arm-none-eabi-9-2020-q2-update/* /usr/
 sudo rm -r gcc-arm-none-eabi-9-2020-q2-update
+sudo rm gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
 
 sudo apt-get install python3-venv -y
 
@@ -70,7 +74,65 @@ source ~/.venv/mbed/bin/activate
 
 pip3 install mbed-cli
 
-sudo cp mbed-cli /home/pi/Desktop
+mbed config --global toolchain GCC_ARM
+
+cat > /home/pi/Desktop/mbed-cli <<EOF
+[Desktop Entry]
+Comment=mbed-cli in venv terminal
+Terminal=false
+Name=mbed-cli
+Exec=lxterminal -e "echo This is a console with mbed-cli enabled;source $HOME/.venv/mbed/bin/activate;$SHELL"
+Type=Application
+Icon=/usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
+EOF
+
+# Install nodejs
+
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+sudo npm install -g npm
+
+sudo npm install -g edge-impulse-cli
+
+# Install workshop materials
+
+sudo mkdir /home/pi/workshop-ai-edge
+sudo chown pi:pi /home/pi/workshop-ai-edge
+cd /home/pi/workshop-ai-edge
+
+git clone https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbed.git
+git clone https://github.com/vives-ai-edge/accelero-data-forwarder.git
+git clone https://github.com/edgeimpulse/example-standalone-inferencing-mbed.git
+
+source $HOME/.venv/mbed/bin/activate
+cd /home/pi/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed
+git checkout sensortile
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed config root .
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
+
+cd /home/pi/workshop-ai-edge/accelero-data-forwarder
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed config root .
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
+
+cd /home/pi/workshop-ai-edge/example-standalone-inferencing-mbed
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed config root .
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
 
 echo "-----------------------------------------------------------"
 echo " Done !"
