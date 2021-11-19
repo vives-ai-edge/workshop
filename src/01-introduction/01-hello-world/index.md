@@ -45,3 +45,7 @@ One can run the whole notebook by using the ![Run all](/img/jupyter_arrow.png) s
 6. [Deploy to a Microcontroller](../02-training-a-model/index.md)
 
 The training dataset can be adjusted to your liking, but keep in mind that the program running on the microcontroller will have to be adjusted accordingly!
+
+## Next steps
+
+Running the notebook will have created a new folder named `models`. In that folder you can find `model.cc` which is a C++ file that contains an array with the quantized weights of the model you created and trained. In the next steps we are going to use that file to infere the model on the Sensortile microcontroller.
