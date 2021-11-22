@@ -46,7 +46,7 @@ module.exports = {
       { text: 'IoT Incubator', link: 'https://iot-incubator.be/' },
       { text: 'EAVISE', link: 'https://iiw.kuleuven.be/onderzoek/eavise' }
     ],
-    repo: 'vives-ai-edge/workshop',
+    repo: 'vives-ai-edge',
     docsDir: 'src',
     docsBranch: 'master',
     sidebarDepth: 1,
