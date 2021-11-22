@@ -104,6 +104,7 @@ cd /home/pi/workshop-ai-edge
 git clone https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbed.git
 git clone https://github.com/vives-ai-edge/accelero-data-forwarder.git
 git clone https://github.com/edgeimpulse/example-standalone-inferencing-mbed.git
+git clone https://github.com/vives-ai-edge/AB-writing-standalone-inference-mbed.git
 
 source $HOME/.venv/mbed/bin/activate
 cd /home/pi/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed
@@ -126,6 +127,15 @@ mbed target NUCLEO_L476RG
 mbed toolchain GCC_ARM
 
 cd /home/pi/workshop-ai-edge/example-standalone-inferencing-mbed
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed config root .
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
+
+cd /home/pi/workshop-ai-edge/AB-writing-standalone-inference-mbed
 mbed deploy
 cd mbed-os
 pip3 install -r requirements.txt
