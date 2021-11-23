@@ -71,7 +71,7 @@ The Mbed library, a library to allow serial communication over USB and the libra
 
 We are defining several objects and variables to interface with the USB serial interface, an LED, the accelerometer, which communicates via SPI. The variables are used for timing, saving the sensor ID and the sensor data. The library for the sensor will return three signed integer values which represent the acceleration of the device in the x-, y- and z-direction and specified in milli-G (mg).
 
-```c++
+```cpp
 USBSerial ser;
 DigitalOut led((PinName)0x6C);
 SPI devSPI(PB_15, NC, PB_13);  // 3-wires SPI on SensorTile  
