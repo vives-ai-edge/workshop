@@ -1,5 +1,6 @@
 node_modules/
 dist/
+img/*.bmp
 # Local Netlify folder
 .netlify
 # src/01-introduction/01-hello-world/tensorflow-lite-micro-hello-world-mbed/.git
