@@ -18,13 +18,13 @@ Now that we successfully created a new project, press **OK** to go to the dashbo
 
 After creating your new project you will enter your project dashboard page with a notification to easily get started with your project.
 
-![image-20211123094932297](C:\Users\u0110583\Documents\MbedFiles\vives-ai-edge\workshop\img\ei_wizard.png)
+![image-20211123094932297](../../../img/ei_wizard.png)
 
 The goal of this project is to use the accelerometer sensor values to detect which letters or number are being written down. The wizard provides us with an option to select **Accelerometer data**. We will use this option. As you can see, Edge Impulse is not only limited to sensor data, but can also have audio, images or video as data inputs. You can even create your own datasets from any sensor.
 
 Selecting **Accelerometer data** you get two new options:
 
-![image-20211123094932297](C:\Users\u0110583\Documents\MbedFiles\vives-ai-edge\workshop\img\ei_wizard_accelerometer.png)
+![image-20211123094932297](../../../img/ei_wizard_accelerometer.png)
 
 We can connect a development board using the Data Forwarding tool from Edge Impulse (which we will do!) or we could follow a tutorial in the Documentation of Edge Impulse to analyse movement derived from the accelerometer in realtime.
 
