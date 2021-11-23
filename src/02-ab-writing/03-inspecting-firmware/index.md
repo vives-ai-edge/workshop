@@ -216,7 +216,7 @@ Note that two arguments were given to the `term`-command:
 
 The terminal should connect to the Sensortile and give you the following output:
 
-![Serial port output](../../../img/terminal-data-forwarder.bmp)
+![Serial port output](../../../img/terminal-data-forwarder.png)
 
 The terminal shows the output of our firmware, namely the accelerometer ID, three accelerometer values in the setup-part of the main function and the accelerometer values at 100 Hz.
 
