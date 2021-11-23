@@ -61,7 +61,7 @@ The code can be split up into five parts:
 
 The Mbed library, a library to allow serial communication over USB and the library to read out the accelerometer are imported in the project.
 
-```c++
+```cpp
 #include "mbed.h"
 #include "USBSerial.h"
 #include "LSM303AGRAccSensor.h"
@@ -71,7 +71,7 @@ The Mbed library, a library to allow serial communication over USB and the libra
 
 We are defining several objects and variables to interface with the USB serial interface, an LED, the accelerometer, which communicates via SPI. The variables are used for timing, saving the sensor ID and the sensor data. The library for the sensor will return three signed integer values which represent the acceleration of the device in the x-, y- and z-direction and specified in milli-G (mg).
 
-```c++
+```cpp
 USBSerial ser;
 DigitalOut led((PinName)0x6C);
 SPI devSPI(PB_15, NC, PB_13);  // 3-wires SPI on SensorTile  
@@ -87,7 +87,7 @@ int32_t axes[3];
 
 Two functions are defined, namely `sample` which is used to trigger an event on a timer interrupt. The event will allow a sensor value to be measured and outputted to the serial interface. The `main` function is the function that will be called when starting the program.
 
-```c++
+```cpp
 void sample(){
     trig=1;
 }
@@ -102,7 +102,7 @@ int main(void)
 
 Inside of the main function the setup of the peripherals is defined first. The orange LED on the sensortile will be put on, the accelerometer sensor will be initialised using the specified methods from it's library. The firmware will also output once the ID of the accelerometer and the first accelerometer values for each axis. Finally, a timer is initialised which will call the `sample` function every 10.000 microseconds (us). This means that every 10 ms that function will be called (or we create a trigger that runs at 100 Hz).
 
-```c++
+```cpp
     led = 1;
     accelerometer.init(NULL);
     accelerometer.enable();
@@ -117,7 +117,7 @@ Inside of the main function the setup of the peripherals is defined first. The o
 
 Finally, this part of code will run indefinitely. It will wait untill the timer triggers the `sample`function which will allow the code to get accelerometer values. The values are immediately send out to the USB serial port. The LED is toggled so that it will flash for every other accelerometer sample.
 
-```c++
+```cpp
     while(true){
         while (!trig){}
         trig = 0;
