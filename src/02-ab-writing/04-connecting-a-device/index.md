@@ -20,6 +20,8 @@ Next, it will find the serial device to connect to. If you have both the Sensort
 
 ![Data forwarding setup](../../../img/ei_data_forwarder4.png)
 
+**Note: if the detected frequency is not what you configured, retry or force the frequency by adding "-f 100" after the edge-impulse-data-forwarder.**
+
 Now we need to confirm that the device has correctly been connected with our Edge Impulse project.
 
 ## Edge Impulse devices
