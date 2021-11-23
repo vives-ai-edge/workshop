@@ -14,13 +14,13 @@ By double-clicking the icon, a terminal is opened running in a virtual environme
 
 The required mbed project files to generate the accelerometer data have been automatically cloned from [it's repository](https://github.com/vives-ai-edge/accelero-data-forwarder) by the installation script. Its location is: `~/workshop-ai-edge/accelero-data-forwarder`. One can go manullay into the folder by using the File Manager, or by changing the directory in the terminal to the one of the project:
 
-```bash
+```shell
 pi@raspberrypi:~ $ cd workshop-ai-edge/accelero-data-forwarder
 ```
 
 **Note: Please run this command and the following inside the mbed-cli terminal and not in the normal terminal application of RaspiOS. In case you are using the normal terminal, activate the virtual environment by sending the following command:**
 
-```bash
+```shell
 source ~/.venv/mbed/bin/activate
 ```
 
@@ -43,7 +43,7 @@ The folder contains several folders (in **bold**) and files. A short description
 
 We are now going to investigate the firmware which will be compiled and put on to the Sensortile Microcontroller. The main code is located in the main.cpp file in the **src**-folder. We can open the file with Geany which is pre-installed on RaspiOS:
 
-```bash
+```shell
 pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ geany src/main.cpp
 ```
 
@@ -121,8 +121,68 @@ Finally, this part of code will run indefinitely. It will wait untill the timer 
     while(true){
         while (!trig){}
         trig = 0;
-        accelerometer.get_x_axes(axes);
+        accelerometer.get_x_axes(axes); // because axis has size 3, it will get x, y and z
         ser.printf("%ld,%ld,%ld\n\r",axes[0],axes[1],axes[2]);
         led = !led;
     }
 ```
+
+To go back to the terminal, close Geany.
+
+## Compiling the code
+
+Before compiling the code, we have to check if the mbed-cli commands are available. We can do this by checking the version:
+
+```shell
+pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed --version
+```
+
+The version should be **1.10.5** or higher.
+
+The following commands have already been executed by the installation script, but for completion, the following commands should be set to configure the mbed compiler correctly. We are configuring the following:
+
+- Initialise the project by downloading the necessary libraries from their repositories.
+- Change the directory to the mbed-os folder.
+- Install the required packages using pip.
+- Change the directory back to the main project root folder.
+- Set the current directory as the project root folder.
+- Set the NUCLEO_L476RG as the target microcontroller.
+- Set the GCC_ARM toolchain as the compiler. The required version was also installed using the installation script.
+
+The configurations are executed by running the following commands in respective order:
+
+```shell
+mbed deploy
+cd mbed-os
+pip3 install -r requirements.txt
+cd ..
+mbed config root .
+mbed target NUCLEO_L476RG
+mbed toolchain GCC_ARM
+```
+
+Now that these settings are set, we can run the following command to compile the code:
+
+```shell
+mbed compile
+```
+
+**Note: the compile will give some warnings on RaspiOS, e.g. missing packages. This is normal and can be ignored. Some packages are not available for the current version of RaspiOS, but we don't need them for this workshop.**
+
+You should see that the compiler will compile all depending libraries and shows the progress using percentages (0.0% to 100.0%). When finished compiling, and image should be created in the `./BUILD/NUCLEO_L476RG/GCC_ARM`-folder named `accelero-data-forwarder.bin`. This file has to be transferred to the Sensortile.
+
+## Uploading the firmware
+
+To upload the firmware to the Sensortile edge device, the hardware must be correctly connected to the Raspberry Pi 400 computer. The required parts are an STM Sensortile, a USB micro to USB-A cable for the Sensortile, a NUCLEO_L476RG board, a USB mini to USB-A cable for the NUCLEO and a programming (ribbon) cable to interface between the NUCLEO and Sensortile.
+
+The connections should look as follows:
+
+<img src="../../../img/global_sensortile_connection.svg" alt="Cable connections" height="400"/>
+
+Additionally, two jumpers on the NUCLEO board should be disconnected. This will allow us to program the Sensortile instead of the microcontroller that is located on the NUCLEO board.
+
+<img src="../../../img/programming_jumpers.jpg" alt="Programming Jumpers on NUCLEO" height="400"/>
+
+As a last step, the ribbon cable should be connected in the right way. Two arrows will point to PIN 1 of both the SWD connector on the NUCLEO and on the Sensortile. Look closely on how to correctly connect them:
+
+<img src="../../../img/nucleo_pin1.jpg" alt="SWD on NUCLEO" height="400"/><img src="../../../img/sensortile_pin1.jpg" alt="SWD on NUCLEO" height="400"/>
