@@ -20,12 +20,25 @@ The testing data can be static or moving depending on what you do with the Senso
 
 ![Example data](../../../img/ei_data_example.png)
 
-Try recording a few sets of test-data and try start writing some letters or numbers on a piece of paper while recording. To mount the Sensortile in the pen-holder (cradle), use the following steps in the figure. The sensortile should be fit snugly.
+Try recording a few sets of test-data and try start writing some letters or numbers on a piece of paper while recording. To mount the Sensortile in the pen-holder (cradle), use the following steps in the figure. The sensortile should fit snugly.
 
-![Cradle fit](../../../img/cradle_mount.svg)
+<img src="../../../img/cradle_mount.svg" alt="Cradle Fit" width="400"/>
 
 If you are comfortable with writing letters within the timeframe and the data looks as expected, you can go over to the next step. **Please remove all the test-data from the collection so you can start from fresh.**
 
 ## Collecting the actual data
 
-In this
+To collect and record the actual data for training the neural network we need to define the labels for our data and need a data capturing plan.
+
+The labels that are chosen in this example are:
+
+- X: Write the letter 'X'
+- O: Write the letter 'O'
+- idle: Not writing a letter, holding pen in hand or laying on the desk.
+
+The capturing plan goes as follows:
+
+1. Capture 20x 10 seconds of writing the letter X continuously (with very short pauses in between <100 ms)
+2. Capture 20x 10 seconds of writing the letter O continuously (with very short pauses in between <100 ms)
+3. Capture 20x 10 seconds of idle by putting the pen in several positions on the desk, holding it in hand still for a few seconds, move around without writing anythign down.
+
