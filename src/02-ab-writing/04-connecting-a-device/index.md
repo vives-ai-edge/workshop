@@ -18,7 +18,7 @@ and press **Enter**. When running this command for the first time, it will ask f
 
 Next, it will find the serial device to connect to. If you have both the Sensortile and NUCLEO board plugged in, please select the Sensortile serial port. Select the Edge Impulse project it has to link the device to. The data forwarder should detect the data frequency, it should be 100 Hz. It will also detect the format of the data which we are sending. The format is three unsigned integers and we have to give them a name. In this example they are called **accX,accY,accZ** but you could give them another name. Lastly, the device has to be given a name, "Sensortile" in this case. A summary of the configuration should look like this:
 
-![Data forwarding setup](../../../img/ei_data_forwarder4.png)
+![Data forwarding setup](./img/ei_data_forwarder4.png)
 
 **Note: if the detected frequency is not what you configured, retry or force the frequency by adding "-f 100" after the edge-impulse-data-forwarder.**
 
@@ -30,7 +30,7 @@ Go back to the browser where the dashboard of your Edge Impulse project is locat
 
 There your Sensortile device with all it's parameters should show up like follows:
 
-![EI devices](../../../img/ei_device1.png)
+![EI devices](./img/ei_device1.png)
 
 The summary should show your device its Name, ID, connection type, sensor type, remotely availability and when it has seen it for the last time.
 

@@ -6,7 +6,7 @@ In this project we will let the Sensortile output three-axis accelerometer data 
 
 To be able to compile an mbed project, we can make use of several tools such as the [Mbed Online Compiler](https://os.mbed.com/ide/), the [Mbed Studio](https://os.mbed.com/studio/) or [Mbed CLI1](https://os.mbed.com/docs/mbed-os/v6.15/build-tools/mbed-cli-1.html). The latter will be using throughout this workshop because of it's easy to use command line interface and use on Linux-based systems. Mbed CLI1 and its dependencies have already been installed by the installation script and is available by double-clicking the terminal icon on the desktop name **mbed-cli**.
 
-![mbed-cli](../../../img/mbed-cli.png) 
+![mbed-cli](./img/mbed-cli.png)
 
 By double-clicking the icon, a terminal is opened running in a virtual environment with mbed-cli enabled together with its dependencies. This is required to not interfere with the installed packages for running the Jupyter Notebook from Part 1 of this workshop.
 
@@ -28,7 +28,7 @@ This will activate the mbed-cli virtual environment and `(mbed)` should now stan
 
 When typing in `ls` one can see which files are located in the folder of the accelero-data-forwarder project. Your terminal should show something like this:
 
-![](../../../img/acc_terminal_files.png)
+![](./img/acc_terminal_files.png)
 
 The folder contains several folders (in **bold**) and files. A short description of each file or folder is given:
 
@@ -177,15 +177,15 @@ To upload the firmware to the Sensortile edge device, the hardware must be corre
 
 The connections should look as follows:
 
-<img src="../../../img/global_sensortile_connection.svg" alt="Cable connections" height="400"/>
+<img src="./img/global_sensortile_connection.svg" alt="Cable connections" height="400"/>
 
 Additionally, two jumpers on the NUCLEO board should be disconnected. This will allow us to program the Sensortile instead of the microcontroller that is located on the NUCLEO board.
 
-<img src="../../../img/programming_jumpers.jpg" alt="Programming Jumpers on NUCLEO" height="400"/>
+<img src="./img/programming_jumpers.jpg" alt="Programming Jumpers on NUCLEO" height="400"/>
 
 As a last step, the ribbon cable should be connected in the right way. Two arrows will point to PIN 1 of both the SWD connector on the NUCLEO and on the Sensortile. Look closely on how to correctly connect them:
 
-<img src="../../../img/nucleo_pin1.jpg" alt="SWD on NUCLEO" height="400"/><img src="../../../img/sensortile_pin1.jpg" alt="SWD on NUCLEO" height="400"/>
+<img src="./img/nucleo_pin1.jpg" alt="SWD on NUCLEO" height="400"/><img src="./img/sensortile_pin1.jpg" alt="SWD on NUCLEO" height="400"/>
 
 ## Flashing the firmware
 
@@ -216,7 +216,7 @@ Note that two arguments were given to the `term`-command:
 
 The terminal should connect to the Sensortile and give you the following output:
 
-![Serial port output](../../../img/terminal-data-forwarder.png)
+![Serial port output](./img/terminal-data-forwarder.png)
 
 The terminal shows the output of our firmware, namely the accelerometer ID, three accelerometer values in the setup-part of the main function and the accelerometer values at 100 Hz.
 
