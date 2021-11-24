@@ -24,7 +24,7 @@ Download [`train_hello_world_model.ipynb`](https://github.com/tensorflow/tflite-
 :::tip Installing dependencies
 In the chapter _Setup Environment_ the tensorflow dependency `tensorflow=2.4.0` is installed. This step might take a long time to complete. I if you are following the workshop on a prepared system, this dependency is already installed for you, and you can skip this step by commenting it out by prepending a `#` character at the beginning of the line.
 
-```pyton
+```python
 # ! pip install tensorflow==2.4.0
 ```
 
