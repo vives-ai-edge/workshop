@@ -19,7 +19,16 @@ jupyter-notebook
 If this doesn't work, try a reboot or typing `source ~/.profile` and try again.
 
 The console should give you a URL with a token attached to it where the notebook is located. Open this URL with Chromium.
-Browse to the folder `~/Documents/workshop/src/01-introduction/01-hello-world/Jupyter TinyML` and open the file `train_hello_world_model.ipynb`.
+Download [`train_hello_world_model.ipynb`](https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb) from the Tensorflow lite micro examples, save or copy/paste the file to the directory where jupyter-notebook is running. The file should now be visible in the jupyter notebook. Open the file `train_hello_world_model.ipynb`.
+
+:::tip Installing dependencies
+In the chapter _Setup Environment_ the tensorflow dependency `tensorflow=2.4.0` is installed. This step might take a long time to complete. I if you are following the workshop on a prepared system, this dependency is already installed for you, and you can skip this step by commenting it out by prepending a `#` character at the beginning of the line.
+
+```pyton
+# ! pip install tensorflow==2.4.0
+```
+
+:::
 
 ## Steps
 
