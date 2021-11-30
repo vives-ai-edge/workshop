@@ -44,7 +44,7 @@ The capturing plan goes as follows:
 
 After collecting the data, your Edge Impulse project should look like this:
 
-![Data Collection Done](img/ei_unsplitted_data.png)
+![Data Collection Done](./img/ei_unsplitted_data.png)
 
 A total of 10 minutes of data has been collected. The **TRAIN / TEST SPLIT** window shows an error by showing a small red warning sign. This means that there is no test data available yet. This will be solved shortly.
 
@@ -53,9 +53,7 @@ Two options are possible now:
 1. We can use the data as-is. (blocks of 10 seconds)
 2. We can manually split the data to only save the captured parts where you were actually writing letters or numbers.
 
-:::tip
-
-**Note**
+:::tip Note
 
 In this example we will go forward by choosing option **1**. Choosing option two requires some pre-processing and determining yourself when you started writing and stopped writing. Another solution to do this is to only record the writing of a single letter. These options could result in better detection performance, but require more time. In the workshop this will not be done to save time.
 
@@ -69,18 +67,17 @@ Browse to the Dashboard page of your Edge Impulse project and scroll down to the
 
 There you should a red **Danger zone** with buttons that can have a huge effect on your project functionality and end-result. Press the **Perform train / test split** button to split up our currently collected dataset. Edge Impulse will ask for a confirmation and explicitly type "perform split" to perform the split.
 
-![Split dataset](img/ei_split_data.png)
+![Split dataset](./img/ei_split_data.png)
 
 Going back to the **Data acquisition** board should show us the same dataset, but now the warning at the **TRAIN / TEST SPLIT** should have dissapeared. The pie-chart and the percentages should show that the data has been split up with a 80/20 ratio, train and test part respectively.
 
-![Data splitted](img/ei_splitted_data.png)
+![Data splitted](./img/ei_splitted_data.png)
 
 Now the data collection is ready and you can advance to creating features out of the data, creating a neural network and training it. In Edge Impulse this is equal to an impulse design.
 
-:::tip
-
-**Data export and import**
+:::tip Data export and import
 
 Edge Impulse allows you to export the data you have collected with it's tools and import previously collected and exported data. **Exporting** can be done by using the "Export data" option at the top of main dashboard page or the data acquisition window. Several export types are available. **Importing** data can be done as well by pressing the "drive with and arrow (pointing up)"-button which is located on the right side of your collected data. Again several formats are available. More information and other methods are available in the [Edge Impulse documentation](https://docs.edgeimpulse.com/reference/ingestion-api).
 
 :::
+
