@@ -46,19 +46,19 @@ module.exports = {
       { text: 'IoT Incubator', link: 'https://iot-incubator.be/' },
       { text: 'EAVISE', link: 'https://iiw.kuleuven.be/onderzoek/eavise' }
     ],
-    repo: 'vives-ai-edge/workshop',
-    docsDir: 'src',
+    repo: 'vives-ai-edge',
+    docsDir: 'workshop/src',
     docsBranch: 'master',
     sidebarDepth: 1,
     sidebar: [
       {
-        title: 'Introduction',   // required
+        title: 'Hello World',   // required
         collapsable: true, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
-          '/01-introduction/01-hello-world/',
-          '/01-introduction/02-training-a-model/',
-          '/01-introduction/03-run-inference/',
+          '/01-hello-world/01-introduction/',
+          '/01-hello-world/02-training-a-model/',
+          '/01-hello-world/03-run-inference/',
         ]
       },
       {
@@ -73,7 +73,7 @@ module.exports = {
           '/02-ab-writing/05-capturing-and-importing-data/',
           '/02-ab-writing/06-creating-an-impulse/',
           '/02-ab-writing/07-feature-generation/',
-          '/02-ab-writing/08-inference/',
+          '/02-ab-writing/08-NN-classification/',
         ]
       },
       {
