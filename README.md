@@ -6,11 +6,11 @@ Course materials for AI@EDGE workshop.
 
 ## Raspberry Pi OS image
 
-This workshop is optimised to run on a Raspberry Pi 400 or any other Raspberry Pi 4 device.
+This workshop is optimised to run on a [Raspberry Pi 400](https://www.raspberrypi.com/products/raspberry-pi-400/) or any other [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) device.
 Make sure to install the 64-bit Raspberry OS (Buster version from 2021.05.07).
 The image can be downloaded [here](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip).
-Use Win32DiskImager or BalenaEtcher to flash the SD card.
-Change the keyboard layout to your preference, in the workshop case: French.
+Use [Raspberry Pi Imager](https://www.raspberrypi.com/software/), [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/) or [BalenaEtcher](https://www.balena.io/etcher/) to flash the SD card.
+Change the keyboard layout to your preference, in the workshop case: `French` (azerty).
 
 ## Install software packages
 
@@ -26,9 +26,9 @@ bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
 
 Necessary hardware to do the workshop:
 
-- Raspberry Pi with Screen, Mouse, Keyboard, SD card with the correct OS
-- Nucleo-L476RG or any other STM board with programmer and USB cable
-- STM Sensortile with programming cable, cradle, USB cable
+- [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) or [Raspberry Pi 400](https://www.raspberrypi.com/products/raspberry-pi-400/) with Screen, Mouse, Keyboard, SD card with the correct OS. Only [Raspbian buster 64 bit](http://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/) is supported.
+- [Nucleo-L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html) or any other STM board with [programmer](https://www.st.com/en/development-tools/st-link-v2.html) and USB cable
+- [STM Sensortile](https://www.st.com/en/evaluation-tools/steval-stlkt01v1.html) with programming cable, cradle, USB cable
 - Mounting system to mount the Sensortile to a pen ([3D printed holder](https://github.com/vives-ai-edge/AB-writing-cradle))
 
 ![Workshop hardware setup](/img/workshop_setup.jpg)
