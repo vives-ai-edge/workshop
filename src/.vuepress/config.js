@@ -52,18 +52,18 @@ module.exports = {
     sidebarDepth: 1,
     sidebar: [
       {
-        title: 'Introduction',   // required
-        collapsable: true, // optional, defaults to true
+        title: 'Hello World',   // required
+        collapsable: false, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
-          '/01-introduction/01-hello-world/',
-          '/01-introduction/02-training-a-model/',
-          '/01-introduction/03-run-inference/',
+          '/01-hello-world/01-introduction/',
+          '/01-hello-world/02-training-a-model/',
+          '/01-hello-world/03-run-inference/',
         ]
       },
       {
         title: 'AB Writing',   // required
-        collapsable: true, // optional, defaults to true
+        collapsable: false, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
           '/02-ab-writing/01-edge-impulse/',
@@ -73,12 +73,12 @@ module.exports = {
           '/02-ab-writing/05-capturing-and-importing-data/',
           '/02-ab-writing/06-creating-an-impulse/',
           '/02-ab-writing/07-feature-generation/',
-          '/02-ab-writing/08-inference/',
+          '/02-ab-writing/08-NN-classification/',
         ]
       },
       {
         title: 'Live Classification',
-        collapsable: true,
+        collapsable: false,
         sidebarDepth: 0,
         children: [
           '/03-live-classification/01-live-classification/',
