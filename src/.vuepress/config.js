@@ -53,7 +53,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Hello World',   // required
-        collapsable: true, // optional, defaults to true
+        collapsable: false, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
           '/01-hello-world/01-introduction/',
@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         title: 'AB Writing',   // required
-        collapsable: true, // optional, defaults to true
+        collapsable: false, // optional, defaults to true
         sidebarDepth: 0,    // optional, defaults to 1
         children: [
           '/02-ab-writing/01-edge-impulse/',
@@ -78,7 +78,7 @@ module.exports = {
       },
       {
         title: 'Live Classification',
-        collapsable: true,
+        collapsable: false,
         sidebarDepth: 0,
         children: [
           '/03-live-classification/01-live-classification/',

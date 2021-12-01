@@ -1,8 +1,8 @@
-# Hello World Example
+# Introduction
 
 Source: TinyML (Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers) by Pete Warden & Daniel Situnayake
 
-## Goal
+## TinyML Hello World Goal
 We want to calculate the sine of x and use its output to control the timing of a flashing LED on our microcontroller.
 Instead of using mathematic functions to calculate the sine of x we can train a model that takes x (going from 0 to 2&pi;) and outputs the corresponding sine value (which lays between -1 and 1).
 
