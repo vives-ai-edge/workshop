@@ -28,7 +28,7 @@ This will activate the mbed-cli virtual environment and `(mbed)` should now stan
 
 When typing in `ls` one can see which files are located in the folder of the accelero-data-forwarder project. Your terminal should show something like this:
 
-![](./img/acc_terminal_files.png)
+![Terminal files](./img/acc_terminal_files.png)
 
 The folder contains several folders (in **bold**) and files. A short description of each file or folder is given:
 

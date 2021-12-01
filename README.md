@@ -25,6 +25,7 @@ bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
 ## Hardware requirements
 
 Necessary hardware to do the workshop:
+
 - Raspberry Pi with Screen, Mouse, Keyboard, SD card with the correct OS
 - Nucleo-L476RG or any other STM board with programmer and USB cable
 - STM Sensortile with programming cable, cradle, USB cable

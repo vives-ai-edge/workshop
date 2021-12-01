@@ -80,4 +80,3 @@ Now the data collection is ready and you can advance to creating features out of
 Edge Impulse allows you to export the data you have collected with it's tools and import previously collected and exported data. **Exporting** can be done by using the "Export data" option at the top of main dashboard page or the data acquisition window. Several export types are available. **Importing** data can be done as well by pressing the "drive with and arrow (pointing up)"-button which is located on the right side of your collected data. Again several formats are available. More information and other methods are available in the [Edge Impulse documentation](https://docs.edgeimpulse.com/reference/ingestion-api).
 
 :::
-
