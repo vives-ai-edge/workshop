@@ -1,4 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+clean="false"
+
+usage() { echo "$0 usage:" && grep " .)\ #" $0; exit 0; }
+
+while getopts ":hc" arg; do
+  case $arg in
+    c)
+      echo "clean mode activated"
+      clean="true"
+      ;;
+    h | *)
+      usage
+      exit 0
+      ;;
+  esac
+Done
 
 echo "           _____        ______ _____   _____ ______  __          ______  _____  _  __ _____ _    _  ____  _____   ";
 echo "     /\   |_   _| ____ |  ____|  __ \ / ____|  ____| \ \        / / __ \|  __ \| |/ // ____| |  | |/ __ \|  __ \  ";
@@ -23,8 +40,13 @@ sudo apt install libffi-dev -y
 sudo -H pip3 install jupyter
 sudo -H pip3 install pygments==2.4.1
 
-sudo pip uninstall tensorflow
-sudo pip3 uninstall tensorflow
+
+# Make sure older versions are not installed. Only 2.4.1 is allowed
+if ! (pip3 list | grep "tensorflow.*2\.4\.1" > /dev/null); then
+  sudo pip uninstall tensorflow
+  sudo pip3 uninstall tensorflow
+fi
+
 # install the dependencies (if not already onboard)
 sudo apt-get install gfortran -y
 sudo apt-get install libhdf5-dev libc-ares-dev libeigen3-dev -y
@@ -45,11 +67,14 @@ sudo -H pip3 install matplotlib pandas
 
 # sudo -H pip3 install tensorflow-2.6.0-cp37-cp37m-linux_aarch64.whl
 sudo -H pip3 install gdown
+sudo -H pip3 install wrapt --upgrade
 
 source ~/.profile 
 
-# download the wheel
-gdown https://drive.google.com/uc?id=1WDG8Rbi0ph0sQ6TtD3ZGJdIN_WAnugLO
+if [ ! -f "./tensorflow-2.4.1-cp37-cp37m-linux_aarch64.whl" ]; then
+  gdown https://drive.google.com/uc?id=1WDG8Rbi0ph0sQ6TtD3ZGJdIN_WAnugLO
+fi
+
 # install TensorFlow 2.4.1 (± 68 min @1950 MHz)
 sudo -H pip3 install tensorflow-2.4.1-cp37-cp37m-linux_aarch64.whl
 
@@ -60,11 +85,14 @@ sudo -H pip3 install tensorflow-2.4.1-cp37-cp37m-linux_aarch64.whl
 sudo apt install mercurial -y
 
 # sudo apt install gcc-arm-none-eabi -y
-wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
-tar xjvf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 # -C /usr/share/bin/
-sudo cp -r gcc-arm-none-eabi-9-2020-q2-update/* /usr/
-sudo rm -r gcc-arm-none-eabi-9-2020-q2-update
-sudo rm gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
+if [ ! -d "/usr/arm-none-eabi" ];
+then
+  wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
+  tar xjf gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2 # -C /usr/share/bin/
+  sudo cp -r gcc-arm-none-eabi-9-2020-q2-update/* /usr/
+  sudo rm -r gcc-arm-none-eabi-9-2020-q2-update
+  sudo rm gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
+fi
 
 sudo apt-get install python3-venv -y
 
@@ -96,6 +124,12 @@ sudo npm install -g npm
 sudo npm install -g edge-impulse-cli
 
 # Install workshop materials
+if [ "${clean}" == "true" ]; then
+  sudo rm -rf /home/pi/workshop-ai-edge
+elif [ -d "/home/pi/workshop-ai-edge" ]; then
+  echo "Workshop directory already exists. Run with -c if you wish to clean install."
+  exit -1
+fi
 
 sudo mkdir /home/pi/workshop-ai-edge
 sudo chown pi:pi /home/pi/workshop-ai-edge
