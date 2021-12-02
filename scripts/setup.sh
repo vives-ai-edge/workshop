@@ -67,7 +67,6 @@ sudo -H pip3 install matplotlib pandas
 
 # sudo -H pip3 install tensorflow-2.6.0-cp37-cp37m-linux_aarch64.whl
 sudo -H pip3 install gdown
-sudo -H pip3 install wrapt --upgrade
 
 source ~/.profile 
 
