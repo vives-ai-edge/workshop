@@ -51,6 +51,7 @@ source ~/.profile
 # download the wheel
 gdown https://drive.google.com/uc?id=1WDG8Rbi0ph0sQ6TtD3ZGJdIN_WAnugLO
 # install TensorFlow 2.4.1 (± 68 min @1950 MHz)
+sudo -H pip3 install wrapt --upgrade --ignore-installed # fix bug
 sudo -H pip3 install tensorflow-2.4.1-cp37-cp37m-linux_aarch64.whl
 
 # wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-aarch64.sh -O ~/miniconda.sh
