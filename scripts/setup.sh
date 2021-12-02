@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
 clean="false"
+if [ "$1" == "--clean" ]; then
+  clean="true"
+fi
 
-usage() { echo "$0 usage:" && grep " .)\ #" $0; exit 0; }
+# usage() { echo "$0 usage:" && grep " .)\ #" $0; exit 0; }
 
-while getopts ":hc" arg; do
-  case $arg in
-    c)
-      echo "clean mode activated"
-      clean="true"
-      ;;
-    h | *)
-      usage
-      exit 0
-      ;;
-  esac
-Done
+# while getopts ":hc" arg; do
+#   case $arg in
+#     c)
+#       echo "clean mode activated"
+#       clean="true"
+#       ;;
+#     h | *)
+#       usage
+#       exit 0
+#       ;;
+#   esac
+# Done
 
 echo "           _____        ______ _____   _____ ______  __          ______  _____  _  __ _____ _    _  ____  _____   ";
 echo "     /\   |_   _| ____ |  ____|  __ \ / ____|  ____| \ \        / / __ \|  __ \| |/ // ____| |  | |/ __ \|  __ \  ";
