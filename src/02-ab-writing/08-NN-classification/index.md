@@ -97,11 +97,17 @@ We can see that the confusion matrix is worse for the quantised model, again for
 
 ### Feature explorer
 
-
+The feature explorer will give us a visualisation of the classified windows in a 3D view. The different colors are represented by the three labels (X, O and idle) and  if they were correctly or incorrectly classified. By clicking on one we can see the sample in detail and see what features were used to classifiy this window. In this way you can debug your data set and evaluate the features.
 
 ### On-device performance
 
+Lastly, the on-device performance is estimated by Edge Impulse according to your configured device (in the Dashboard). In this case, it is done for a Cortex-M4F 80 MHz microcontroller. The performance uses three metrices:
 
+- Inferencing time: This is the time that it will take on the microcontroller to classify one input using the neural network.
+- Peak RAM usage: This is the amount of RAM that will be used by the system.
+- Flash usage: This is the amount of Flash memory that will be used by the system.
+
+It is important to check these values. Depending on the application, the inferencing time should be within the imposed time frame for classifying an input window. Additionally, the RAM and flash memory should fit on your device under test.
 
 ## Next steps
 
