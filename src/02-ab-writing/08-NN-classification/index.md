@@ -4,11 +4,11 @@ The learning block of the impulse design was configured as a Keras Classificatio
 
 ## NN settings
 
-The neural network has several training settings and an architecture that can be configured. The training settings consist of a number of training cycles and a learning rate. The **Number of training cycles** means how much **epochs** a neural network has to be trained. An **epoch** is an instant in time chosen when something new starts, in the case of training a neural network, an epoch denotes the start of a new training cycle. The **Learning rate** will configure how fast the neural network learns. The learning rate is a factor that decides how big or small the update of a node its weight will change. If the network overfits quickly, then lower the learning rate. The default number of training cycles configured in Edge Impulse is 30, and the default learning rate is 0.0005.
+The neural network has several training settings and an architecture that can be configured. The training settings consist of a number of training cycles and a learning rate. The **Number of training cycles** means how much **epochs** a neural network has to be trained. An **epoch** is an instant in time chosen when something new starts, in the case of training a neural network an epoch denotes the start of a new training cycle. The **Learning rate** will configure how fast the neural network learns. The learning rate is a factor that decides how big or small the update of a node its weight will be. If the network overfits quickly, then lower the learning rate. The default number of training cycles configured in Edge Impulse is 30, and the default learning rate is 0.0005.
 
 ![Training default settings](./img/ei_default_training_settings.png)
 
-Because we have a quite small data set we are going to change the number of training cycles to 100. The learning rate we will leave as is.
+Because we have a quite small data set we are going to change the number of training cycles to 100. The learning rate we will leave as-is.
 
 :::tip Hyperparameters
 
