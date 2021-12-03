@@ -26,5 +26,5 @@ Edge Impulse will calculate those features by starting a job on their available 
 
 The pointcloud in the feature explorer already gives us an idea on how good our neural network will be able to separate the different labels from the others. The more spaced out they are, the better the network results may be.
 
-The second part of the impulse design was setting the training block. This block will be configured in the next chapter.
+The second part of the impulse design was setting the learning block. This block will be configured in the next chapter.
 
