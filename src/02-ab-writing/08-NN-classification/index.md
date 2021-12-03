@@ -41,7 +41,7 @@ A dense or Fully Connected layer is a layer of nodes where all the inputs are co
 
 If desired, one can remove or add extra layers to the network architecture. Different types of layers are possible but are not discussed further in this workshop. More details about the layers used in Edge Impulse and all other configurable layers can be found in the [Keras Layers API](https://keras.io/api/layers/).
 
-![Training default settings](./img/ei_adjusted_training_settings.png)
+![Adjusted training settings](./img/ei_adjusted_training_settings.png)
 
 ## NN training
 
@@ -52,17 +52,56 @@ All configurations are set to start training the network. When pressing **Start 
 - val_loss: The loss for the testing or validation dataset.
 - val_accuracy: The accuracy for the testing or validation dataset.
 
-![Training default settings](./img/ei_training_done.png)
+![Training done](./img/ei_training_done.png)
 
 When the training is done, a summary is given of the training results. They are discussed in the next section.
 
 ## NN results
 
+The training results consists out of five parts. Every part is explained in detail using the two figures below.
+
+1. Model selection
+2. Last training performance (on the validation data set)
+3. Confusion matrix (on the validation data set)
+4. Feature explorer
+5. On-device performance (of the NN only on your specified device)
+
+<img src="./img/ei_float_training_done.png" alt="Unoptimized model" width="400"/><img src="./img/ei_int_training_done.png" alt="Optimized model" width="400"/>
+
+### Model version
+
+At the top of the "model results"-window we can select two versions:
+
+1. Unoptimised (float32): This model is not optimized (or quantised) to run on a microcontroller and will use more memory space and longer inference time.
+2. Optimised (int8): This model is optimized (and thus quantised from 32-bit floating point to 8-bit integer values) to run on a microcontroller and will use less memory space and less inference time. 
+
+### Last training performance
+
+The last training performance can be indicated with two metrics, the accuracy and the loss. Both are shown here on the testing or validation dataset (so not the result of the training itself). The definition of accuracy and loss has been given previously.
+
+We can see that the accuracy and loss are worse for the microcontroller-optimized (quantised) model. Worse accuracy means lower, worse loss means higher. This is due to the fact that we convert the weights in the nodes of the network from a floating point value (allmost all possible numbers) to 8-bit integers (0-255).
+
+:::tip Dynamic range
+
+The effect of the quantisation step can be improved by have a lower dynamic range of the acquired data. For example, most windows have sample values between -5 and +5. There is one window which has an outlayer of +20 because of noise or abrupt movements. When converting the data for training, all values are **normalised**. This means that they are scaled relative to the maximum value. In this way we will lose precision when quantising the weights.
+
+:::
+
+### Confusion matrix
+
+The confusion matrix shows the performance of the network on the validation dataset for each type of input (window) and its calculated output. The percentage of each classification is given through this matrix. For example in the unoptimised case, the percentage of written 'O's that were actually recognised as 'O's is 74.8%. The other 25.2% of 'O's were classified as 'X' or 'idle' and their percentages can be found in the rest of that row. The same frame of thought can be done for the other rows. Edge Impulse will show how good the percentages are with colors.
+
+The F1 score is another metric on how good the network classified the given inputs to its outputs. More information on the F1 score can be found [here](https://towardsdatascience.com/the-f1-score-bec2bbc38aa6).
+
+We can see that the confusion matrix is worse for the quantised model, again for the same reason as the worsening of the training performance. We can also see that the network has more difficulty in recognising and 'X' as an 'X' and that it classifies it for almost 50% of the time as an 'O'. The network has no problems classifying the idle state of the pencil.
+
+### Feature explorer
 
 
-![Training default settings](./img/ei_float_training_done.png)
 
-![Training default settings](./img/ei_int_training_done.png)
+### On-device performance
+
+
 
 ## Next steps
 
