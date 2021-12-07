@@ -10,6 +10,8 @@ Instead of using mathematical functions to calculate the sine of x we can train 
 
 ## Prerequisites
 
+We are going to use the command line to start a Jupyter-Notebook. Open a terminal by pressing the terminal symbol in the taskbar at the top of you window. **Note: Don't use the mbed-cli terminal icon on the desktop as this will not run the notebook with the correct requirements.**
+
 Open a Jupyter-Notebook instance using the command line and typing:
 
 ```shell

@@ -235,7 +235,8 @@ Note that two arguments were given to the `term`-command:
 - -b 115200: Configure the baud rate to be 115.200 baud.
 - -p /dev/ttyACM0: Configure the serial port to read on to be /dev/ttyACM0.
 
-**Note: It is possible that your serial port does not correspond with ACM0, but with ACM1 (or other). Hint: type in the command until tty and use the tab-key on your keyboard to give the possible ports to connect to. Complete the command with the possible port (ACM\*).**
+**<u>Note:</u> It is possible that your serial port does not correspond with ACM0, but with ACM1 (or other). **
+**<u>Hint:</u> type in the command until tty and use the tab-key on your keyboard to give the possible ports to connect to. Complete the command with the possible port (ACM\*).**
 
 The terminal should connect to the Sensortile and give you the following output:
 
