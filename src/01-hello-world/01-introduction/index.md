@@ -4,7 +4,7 @@ Source: TinyML (Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-P
 
 ## TinyML Hello World Goal
 We want to calculate the sine of x and use its output to control the timing of a flashing LED on our microcontroller.
-Instead of using mathematic functions to calculate the sine of x we can train a model that takes x (going from 0 to 2&pi;) and outputs the corresponding sine value (which lays between -1 and 1).
+Instead of using mathematical functions to calculate the sine of x we can train a model that takes x (going from 0 to 2&pi;) and outputs the corresponding sine value (which lays between -1 and 1).
 
 ![Hello World](./img/hello_world_tf.svg)
 
@@ -62,10 +62,10 @@ One can run the whole notebook by using the ![Run all](./img/jupyter_arrow.png) 
    * Generate model with quantisation
    * Compare the model performance
 5. Generate a Tensorflow Lite for Microcontrollers model
-6. [Deploy to a Microcontroller](../02-training-a-model/index.md)
+6. Deploy to a Microcontroller
 
 The training dataset can be adjusted to your liking, but keep in mind that the program running on the microcontroller will have to be adjusted accordingly!
 
 ## Next steps
 
-Running the notebook will have created a new folder named `models`. In that folder you can find `model.cc` which is a C++ file that contains an array with the quantized weights of the model you created and trained. In the next steps we are going to use that file to infere the model on the Sensortile microcontroller.
+Running the notebook will have created a new folder named `models`. In that folder you can find `model.cc` which is a C++ file that contains an array with the quantised weights of the model you created and trained. In the next steps we are going to use that file to infer the model on the Sensortile microcontroller.
