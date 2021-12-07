@@ -1,5 +1,15 @@
 # Run Inference
 
+## mbed
+
+## Targets
+
+### Nucleo L476RG
+
+### SensorTile
+
+## Application
+
 Now we are ready to run the model on an embedded device. In this case we will run the it on a Cortex-M4 microcontroller from ST. The STM42L476RG is provided on a [NUCLEO L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html) development board. We can use the included Stlink v2 debugger to flash the device.
 
 The NUCLEO provides Arduino and Morpho compatible headers to make it easy to connect and expand functionality. The microcontroller is a 32bit ARM Cortex M4 with a 80Mhz clock.
@@ -10,42 +20,67 @@ The NUCLEO provides Arduino and Morpho compatible headers to make it easy to con
 
 You can follow along and find the full code of the project on GitHub: [vives-ai-edge/tensorflow-lite-micro-hello-world-mbed](https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbed)
 
-## Mbed project setup
+### Mbed project setup
 
+In order to get the mbed tool up and running, some configuration must be added to the project. Mbed uses a `mbed_app.json` file for every project that contain custom configuration for that project. For this example to work we need to add some configuration.
 
-`mbed_app.json`
+Executing tensorflow and allocating the model will need memory on the microcontroller. By default mbed-os allocates some memory to the main thread. In order to have enough free memory on the stack, the main stack size might need to be changed. For this example a value of `65kb` is more than enough.
+
 
 ```json
-{
-    "config": {
-      "main-stack-size": {
-                "value": 65536
-      }
-    },
-    "requires": ["bare-metal", "events"]
-    ,"macros": [
-        "NDEBUG",
-        "TF_LITE_DISABLE_X86_NEON",
-        "TF_LITE_STATIC_MEMORY"
-    ],
-    "target_overrides": {
-        "*": {
-            "platform.stdio-baud-rate": 115200,
-            "target.printf_lib": "std",
-            "platform.minimal-printf-enable-floating-point": false
-        },
-        "NUCLEO_L073RZ": {
-            "target.printf_lib": "minimal-printf",
-            "platform.minimal-printf-enable-floating-point": false
-        }
+"config": {
+    "main-stack-size": {
+        "value": 65536
     }
-}
+},
 
+The application does not need the whole RTOS runtime. The `bare-metal` runtime provides all the needed resources to run the tensorflow library. 
+
+Not having the RTOS available means you need to take care of timings and timers yourself. Luckally mbed provides the `events` library as a separate module. This will enable us to use an `EventQueue` that can take care of timed execution of the appliation.
+
+The last requirement is the _USB driver_ library that provides USB functionality. This enables us to enumerate a USB Serial device using the USB cable. This is needed for the Sensortile as no UART pins or interface is provided on the small board.
+
+```json
+"requires": ["bare-metal", "events", "drivers-usb"]
 ```
 
-## Model and libraries
+Tensorflow needs some proprocessor directives enabled to compile the application.
 
-In order to load the correct libraries for Tensorflow and mbed, we need to `#include` them. 
+```json
+"macros": [
+    "NDEBUG",
+    "TF_LITE_DISABLE_X86_NEON",
+    "TF_LITE_STATIC_MEMORY"
+],
+```
+
+The last thing that needs to be configured for easy debugging are some setting for the UART. The _baudrate_ could be set to 115200 baud.
+
+Mbed does not load the `std` library by default. This is a measure mainly to free up flasch and memory for features that might not be used. In our case we want to leverage some features of the standard library for formatted printing like `printf` and be able to print floating point numbers with `printf`.
+
+```json
+"target_overrides": {
+    "*": {
+        "platform.stdio-baud-rate": 115200,
+        "target.printf_lib": "std",
+        "platform.minimal-printf-enable-floating-point": false,
+        "target.device_has_add": [
+            "USBDEVICE"
+        ]
+    }
+```
+
+With the `mbed_app.json` settings file configured, the compiler and runtime will have the correct information to run the example. Lets take a look at the implementation.
+
+### Model and libraries
+
+The first thing we need to to is to load the correct libraries for mbed and Tensorflow using `#include`.
+
+This is also the time to load the model using the generated `model.h` file. This files contains the `char array` representation of the model.
+
+_Using_ the `tflite` namespace will make the implementation less verbose and easier to read or understand.
+
+An `EventQueue` object is created as well. This will help later when implementing a timer in order to run the inferencing in a repetitive and timed interval.
 
 ```cpp
 #include "mbed.h"
@@ -60,7 +95,30 @@ using namespace tflite;
 EventQueue queue;
 ```
 
-## Application constants
+### USB Serial for Sensortile
+
+The Nucleo L476RG and Sensortile use the same microcontroller, but differ allot in hardware features. The Sensortile lacks the UART to USB converter that is provided on the Nucleo using the ST-Link. In order to be able to communicate with, and get the values of the Sensortile, the USB port can be used.
+
+The default `STD_OUT` for the `printf` needs to be redirected to the USB Serial device. This can be done using the `mbed_override_console()` function.
+
+Now we can use the normal and global `printf` function in our application and communicate over the USB Serial device.
+
+```cpp
+//*** Comment next line out if target IS a sensortile ***//
+// #define TARGET_SENSORTILE
+
+#ifdef TARGET_SENSORTILE
+  #include "USBSerial.h"
+
+  USBSerial serial(false);
+
+  FileHandle *mbed::mbed_override_console(int) {
+    return &serial;
+  }
+#endif
+```
+
+### Application constants
 
 The application works by generating a `x` value on every iteration. The `x` must represent value that ranges from 0 to (2 x Pi). So first we need to define Pi and the upper limit value `xrange`. These values where used when training the model.
 
@@ -75,7 +133,7 @@ const int InferencesPerCycle = 100;
 int inference_count = 0;
 ```
 
-## Tensorflow and the model
+### Tensorflow and the model
 
 Now we are ready to load the `model`. The model contains the flatbuffer C data array representation of the generated model.
 
@@ -84,6 +142,8 @@ In order to use Tensorflow Lite Micro, an interpreter is used to convert the mod
 In this case a memory arena of 2468 bytes is created, with some extra size.
 
 In order to supply and receive values from the model, an input and output `Tensor` object is needed.
+
+The last thing to do is to allocate some memmory for that the Tensorflow interpreter can use to do its work.
 
 ```cpp
 // Structure that contains the generated tensorflow model
@@ -101,19 +161,33 @@ const int TensorArenaSize = ModelArenaSize + ExtraArenaSize;
 uint8_t tensor_arena[TensorArenaSize];
 ```
 
+### Output and feedback
+
+In order to debug, or get feedback of the from the application, two interfaces can be used.
+
+First the led can be used to indicate the current result or `Y` value that is calculated by the model. The Nucleo provides a led that is attached to a PWM output. This enables dimming of the led, depending of a value between `0.0` and `1.0`.
+
+The Sensortile does not provide a led on a PWM output, but only on a GPIO. This means we are not able to dim the led in an efficient way. We can solve this by only turning the led on or off depending of the resulting value.
+
+Other than the visual feedback on a led, more information can be provided using the UART or Serial port. In this case `printf()` is used to nicelly format a string. The floating point numbers are converter to a fixed length, and are padded in order to form a constanct column.
+
 ```cpp
 // Led to indicate the resulted values
-PwmOut led(LED1);
+PwmOut nucleo_led(LED1);
+DigitalOut sensortile_led((PinName)0x6C);
 
 
 void setLed(float value) {
-  led = abs(value);
+  nucleo_led = abs(value);
+  sensortile_led = value < 0.0f ? 0 : 1;
 }
 
 void printValues(float x, float y) {
   printf("x_value: % 2.3f, y_value: % 02.3f\n", x, y);
 }
 ```
+
+### Generating the next X value
 
 ```cpp
 float generateNextXValue() {
@@ -124,6 +198,8 @@ float generateNextXValue() {
 }
 ```
 
+### Inference implementation
+
 ```cpp
 float inference(float x) {
   input->data.f[0] = x;
@@ -131,6 +207,8 @@ float inference(float x) {
   return output->data.f[0];
 }
 ```
+
+### Infer a single time
 
 ```cpp
 void run_once() {
@@ -142,6 +220,8 @@ void run_once() {
     printValues(x_value, y_value);
 }
 ```
+
+### Bringing it all together
 
 ```cpp
 int main(void) {
