@@ -38,9 +38,9 @@ The labels that are chosen in this example are:
 
 The capturing plan goes as follows:
 
-1. Capture 20x 10 seconds of writing the letter X continuously (with very short pauses in between <500 ms)
-2. Capture 20x 10 seconds of writing the letter O continuously (with very short pauses in between <500 ms)
-3. Capture 20x 10 seconds of idle by putting the pen in several positions on the desk, holding it in hand still for a few seconds, move around without writing anythign down.
+1. Capture 20x 10 seconds of writing the letter X continuously (with very short pauses in between <500 ms).
+2. Capture 20x 10 seconds of writing the letter O continuously (with very short pauses in between <500 ms).
+3. Capture 20x 10 seconds of idle by putting the pen in several positions on the desk, holding it in hand still for a few seconds, move around without writing anything down.
 
 After collecting the data, your Edge Impulse project should look like this:
 
@@ -55,7 +55,7 @@ Two options are possible now:
 
 :::tip Note
 
-In this example we will go forward by choosing option **1**. Choosing option two requires some pre-processing and determining yourself when you started writing and stopped writing. Another solution to do this is to only record the writing of a single letter. These options could result in better detection performance, but require more time. In the workshop this will not be done to save time.
+In this example we will go forward by choosing option **1**. Choosing option two requires some pre-processing and you have to decide yourself when you started writing and stopped writing. Another solution to do this is to only record the writing of a single letter. These options could result in better detection performance, but require more time. In the workshop we will not do this to save time.
 
 :::
 
@@ -63,9 +63,17 @@ In this example we will go forward by choosing option **1**. Choosing option two
 
 In order to validate the training of the future neural network, the dataset has to be split up in a part to **train**, and a part to **test** the resulting network. Instead of doing this manually we can let Edge Impulse do this for you.
 
-Browse to the Dashboard page of your Edge Impulse project and scroll down to the bottom of the page.
+:::tip Splitting in Data Acquisition
 
-There you should a red **Danger zone** with buttons that can have a huge effect on your project functionality and end-result. Press the **Perform train / test split** button to split up our currently collected dataset. Edge Impulse will ask for a confirmation and explicitly type "perform split" to perform the split.
+The data can also be split by pressing the red warning sign next to the **TRAIN / TEST SPLIT** window in Data Acquisition.
+
+![Split in data acquisition](./img/ei_split_by_warning.png)
+
+:::
+
+Browse to the **Dashboard page** of your Edge Impulse project and scroll down to the bottom of the page.
+
+There you should find a red **Danger zone** with buttons that can have a huge effect on your project functionality and end-result. Press the **Perform train / test split** button to split up our currently collected dataset. Edge Impulse will ask for a confirmation and explicitly type "perform split" to perform the split.
 
 ![Split dataset](./img/ei_split_data.png)
 

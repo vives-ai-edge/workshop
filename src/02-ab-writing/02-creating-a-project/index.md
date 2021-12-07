@@ -30,4 +30,10 @@ We can connect a development board using the Data Forwarding tool from Edge Impu
 
 For now, we will click the **"Let's get started!"** button to manually add our own edge device (Sensortile). For more information on how to add different edge devices, click the **Connect your development board** button to go to the documentation of Edge Impulse.
 
+:::tip Edge Impulse left-hand-side Menu
+
+When using Edge Impulse in the browser full-screen, the menu on the left-hand-side is always accessible. When using a split screen view (for example to follow this workshop while working in Edge Impulse), it is possible that the menu on the left hand side is hidden. If we are referring to the Dashboard or any other part in the Edge Impulse menu, please don't forget that it is possibly hidden and you should press the button on the top left of the screen to display the menu.
+
+:::
+
 In the next chapter we will first inspect and identify the STM hardware and firmware to successfully import data into your project.
