@@ -18,8 +18,13 @@ jupyter-notebook --no-browser
 
 If this doesn't work, try a reboot or typing `source ~/.profile` and try again.
 
-The console should give you a URL with a token attached to it where the notebook is located. Open this URL with Chromium by pressing `ctrl` and left-clicking the link.
-Download [`train_hello_world_model.ipynb`](https://github.com/tensorflow/tflite-micro/raw/main/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb) from the Tensorflow lite micro examples, save or copy/paste the file to the directory where jupyter-notebook is running. The file should now be visible in the jupyter notebook. Open the file `train_hello_world_model.ipynb`. The file should also be available in the folder `/home/pi/workshop-ai-edge/hello-world-jupyter-notebook`. Please note that it can take some time for Chromium to load the notebook, please press *Wait* when the browser prompts a warning.
+The console should give you a URL with a token attached to it where the notebook is located. Open this URL with Chromium by pressing `ctrl` and left-clicking the link. Open the file `train_hello_world_model.ipynb`which should be located in the folder `/home/pi/workshop-ai-edge/hello-world-jupyter-notebook`. If this is not the case, download [`train_hello_world_model.ipynb`](https://github.com/tensorflow/tflite-micro/raw/main/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb) from the Tensorflow Lite Micro examples, save or copy/paste the file to the directory where Jupyter-notebook is running. The file should now be visible in the Jupyter notebook.
+
+:::tip Loading the notebook
+
+It can take some time for Chromium to load the notebook, please be patient and press *Wait* when the browser prompts a warning.
+
+:::
 
 :::tip Installing dependencies
 In the notebook section _Setup Environment_ the tensorflow dependency `tensorflow=2.4.0` is installed. This step might take a long time to complete. I if you are following the workshop on a prepared system, this dependency is already installed for you, and you can skip this step by commenting it out by prepending a `#` character at the beginning of the line.
