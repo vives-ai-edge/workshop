@@ -12,7 +12,7 @@ By double-clicking the icon, a terminal is opened running in a virtual environme
 
 ## Mbed project files
 
-The required mbed project files to generate the accelerometer data have been automatically cloned from [it's repository](https://github.com/vives-ai-edge/accelero-data-forwarder) by the installation script. Its location is: `~/workshop-ai-edge/accelero-data-forwarder`. One can go manullay into the folder by using the File Manager, or by changing the directory in the terminal to the one of the project:
+The required mbed project files to generate the accelerometer data have been automatically installed (the project is cloned from [it's repository](https://github.com/vives-ai-edge/accelero-data-forwarder) by running the installation script). Its location is: `home/pi/workshop-ai-edge/accelero-data-forwarder`. One can go manually into the folder by using the File Manager, or by changing the directory in the terminal to the one of the project:
 
 ```shell
 pi@raspberrypi:~ $ cd workshop-ai-edge/accelero-data-forwarder
@@ -44,8 +44,14 @@ The folder contains several folders (in **bold**) and files. A short description
 We are now going to investigate the firmware which will be compiled and put on to the Sensortile Microcontroller. The main code is located in the main.cpp file in the **src**-folder. We can open the file with Geany which is pre-installed on RaspiOS:
 
 ```shell
-pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ geany src/main.cpp
+pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ geany src/main.cpp &
 ```
+
+:::tip & after command
+
+By placing an `&` after a command, the terminal stays available after running the command. In this way the Geany application can stay open while continuing in the terminal.
+
+:::
 
 ## The firmware
 
@@ -74,13 +80,14 @@ We are defining several objects and variables to interface with the USB serial i
 ```cpp
 USBSerial ser;
 DigitalOut led((PinName)0x6C);
-SPI devSPI(PB_15, NC, PB_13);  // 3-wires SPI on SensorTile  
-static LSM303AGRAccSensor accelerometer(&devSPI, PC_4);
 
 volatile bool trig = 0;
 Ticker timer;
 uint8_t id;
 int32_t axes[3];
+
+SPI devSPI(PB_15, NC, PB_13);  // 3-wires SPI on SensorTile  
+static LSM303AGRAccSensor accelerometer(&devSPI, PC_4);
 ```
 
 ### Functions
@@ -139,6 +146,8 @@ pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed --version
 
 The version should be **1.10.5** or higher.
 
+:::tip Updating mbed-os and installing its requirements
+
 The following commands have already been executed by the installation script, but for completion, the following commands should be set to configure the mbed compiler correctly. We are configuring the following:
 
 - Initialise the project by downloading the necessary libraries from their repositories.
@@ -154,22 +163,24 @@ The configurations are executed by running the following commands in respective 
 ```shell
 mbed deploy
 cd mbed-os
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt # this can give errors on RPi, we can ignore them
 cd ..
 mbed config root .
 mbed target NUCLEO_L476RG
 mbed toolchain GCC_ARM
 ```
 
-Now that these settings are set, we can run the following command to compile the code:
+:::
+
+When mbed-os is updated, the requirements are installed and the root folder, target and toolchain are configured correctly, we can run the following command to compile the code:
 
 ```shell
 pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed compile
 ```
 
-**Note: the compile will give some warnings on RaspiOS, e.g. missing packages. This is normal and can be ignored. Some packages are not available for the current version of RaspiOS, but we don't need them for this workshop.**
+**Note: compiling the code will give some warnings on Raspberry Pi OS, e.g. missing packages. This is normal and can be ignored. Some packages are not available for the current version of the operating system, but we don't need them for this workshop.**
 
-You should see that the compiler will compile all depending libraries and shows the progress using percentages (0.0% to 100.0%). When finished compiling, and image should be created in the `./BUILD/NUCLEO_L476RG/GCC_ARM`-folder named `accelero-data-forwarder.bin`. This file has to be transferred to the Sensortile.
+You should see that the compiler will compile all depending libraries and shows the progress using percentages (0.0% to 100.0%). When finished compiling, an image should be created in the `./BUILD/NUCLEO_L476RG/GCC_ARM`-folder named `accelero-data-forwarder.bin`. This file has to be transferred to the Sensortile.
 
 ## Connecting the hardware
 
@@ -189,7 +200,11 @@ As a last step, the ribbon cable should be connected in the right way. Two arrow
 
 ## Flashing the firmware
 
-When everything is connected, turn on the Sensortile (small switch on the side next to the USB connector). If necessary, re-connect the NUCLEO to the Raspberry Pi 400. A pop-up window should notify you that a removable medium has been inserted. You can open the folder or ignore this message. The folder should contain two files: DETAILS.TXT and MBED.HTM. If this is not the case, check your connections and retry connecting both microcontrollers.
+When everything is connected, turn on the Sensortile (small switch on the side next to the USB connector).
+
+<img src="./img/onoff_sensortile.jpg" alt="On-off switch on Sensortile" height="300"/>
+
+If necessary, re-connect the NUCLEO to the Raspberry Pi 400. A pop-up window should notify you that a removable medium has been inserted. You can open the folder or ignore this message. The folder should contain two files: DETAILS.TXT and MBED.HTM. If this is not the case, check your connections and retry connecting both microcontrollers.
 
 Now we can return back to the mbed-cli terminal where we compiled the firmware. To flash the binary file to the Sensortile, we can re-run the compilation (this will now run much faster because everything is already there), but with the flash argument:
 
@@ -198,6 +213,14 @@ pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed compile -f
 ```
 
 After the compilation output, the command should automatically copy the binary file to the Sensortile and re-connect. The pop-up window with the notification of a removable medium should come up again. Close it.
+
+While flashing the Sensortile, the LED on the NUCLEO board should flash between green and red.
+
+:::tip Flashing failed
+
+If flashing the target didn't work in this way, try re-connecting the NUCLEO and Sensortile. First connect the Sensortile correctly to the NUCLEO board and lastly plug in the NUCLEO board into the computer. If this still didn't work, try copy-pasting the binary which is located in the `./BUILD/NUCLEO_L476RG/GCC_ARM`-folder named `accelero-data-forwarder.bin` to the Sensortile removable medium.
+
+:::
 
 ## Checking the firmware
 

@@ -22,6 +22,12 @@ bash <(curl -sL ai-edge-workshop.netlify.app/setup.sh)
 Some parts of the script can take quite a while (installation of `setup.py` `bdist_wheel` of `h5py`, `numpy`, etc) to install. The setup may take up to 1 to 2 hours to complete, depending on your system.
 :::
 
+:::danger Possible errors
+
+When running the setup script it is possible that there are some errors and warnings indicated by red text. This is normal due to compatibility issues with the current Raspberry Pi OS. Fortunately we don't need those dependencies for the examples in the workshop and these errors can be **ignored**.
+
+:::
+
 ## Hardware requirements
 
 Necessary hardware to do the workshop:
