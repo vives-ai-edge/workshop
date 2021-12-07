@@ -147,7 +147,6 @@ sudo wget https://github.com/tensorflow/tflite-micro/raw/main/tensorflow/lite/mi
 
 source $HOME/.venv/mbed/bin/activate
 cd /home/pi/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed
-git checkout sensortile
 mbed deploy
 cd mbed-os
 pip3 install -r requirements.txt
