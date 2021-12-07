@@ -30,4 +30,4 @@ The expected outcome is automatically given the name "testing". As we know it sh
 
 ## Conclusion
 
-Using this method we can test our neural network on new data. Unfortunately this does not give us a "real" interpretation on how the neural network would run an perform on an edge device as it only forwards raw data to Edge Impulse and runs nothing on the microcontroller. In the next step, we will download the neural network model and deploy it on the microcontroller.
+Using this method we can test our neural network on new data. Unfortunately this does not give us a "real" interpretation on how the neural network would run an perform on an edge device as it only forwards raw data to Edge Impulse and runs nothing on the microcontroller. In the next step, we will download the neural network model and deploy it on the Sensortile.
