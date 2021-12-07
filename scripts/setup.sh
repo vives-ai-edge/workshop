@@ -142,6 +142,9 @@ git clone https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbe
 git clone https://github.com/vives-ai-edge/accelero-data-forwarder.git
 git clone https://github.com/vives-ai-edge/AB-writing-standalone-inference-mbed.git
 
+sudo mkdir /home/pi/workshop-ai-edge/hello-world-jupyter-notebook
+sudo wget https://github.com/tensorflow/tflite-micro/raw/main/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb -P /home/pi/workshop-ai-edge/hello-world-jupyter-notebook
+
 source $HOME/.venv/mbed/bin/activate
 cd /home/pi/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed
 git checkout sensortile
