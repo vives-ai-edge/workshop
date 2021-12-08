@@ -21,7 +21,7 @@ Under *build firmware* we can see several hardware edge-devices which are direct
 
 ![Firwmare devices](./img/ei_firmware_devices.png)
 
-As our device is not listed in the device list, we are going to download the *optimized* source code *create a library*. Because we are using the mbed tools to compile and deploy our code to the Sensortile, we are going to specify the *C++ library* export. In this way we can use the exported files as normal C++ libraries in our mbed project.
+As our device is not listed in the device list, we are going to download the *optimized* source code under **Create library**. Because we are using the mbed tools to compile and deploy our code to the Sensortile, we are going to specify the **C++ library** export. In this way we can use the exported files as normal C++ libraries in our mbed project.
 
 ![Cpp select](./img/ei_deployment_cpp.png)
 
@@ -63,6 +63,13 @@ Export the contents of the zip-folder to the folder `/home/pi/workshop-ai-edge/A
 - Double-clicking the zip-folder and drag-and-drop its contents to the folder OR
 - by right-clicking the zip-folder and selecting the right folder to export the files to.
 
+The zip-folder contains four items:
+
+- An *edge-impulse-sdk*-folder: Contains the SDK of Edge Impulse with all required libraries for classification, feature extraction etc.
+- A *model-parameters*-folder: A folder with three files that contain the metadata or parameters of your project.
+- A *tflite-model*-folder: Contains the (EON) compiled version of the selected model. This will contain the structure and weights of the (quantised) neural network we created.
+- A *CMakeLists.txt*-file: the configuration file if we would compile the code using the "cmake"-command.
+
 After extracting the files to the standalone mbed project folder, the contents should look like this:
 
 ![Extract to project](./img/ei_mbed_folder.png)
@@ -75,8 +82,49 @@ It is possible that there is no BUILD and \_\_pycache\_\_ folder, this is normal
 
 ## Compiling the code
 
-We now have a mbed-project which is ready to be compiled and place on the Sensortile. The code in the `src` folder has been prepared to accept an impulse with raw features and uses the same code to capture the accelerometer values from the component.
+We now have a mbed-project which is ready to be compiled and placed on the Sensortile. The code in the `src` folder has been prepared to accept an impulse with raw features and uses the same code to capture the accelerometer values from the component.
 
+Make sure the NUCLEO and Sensortile are correctly connected to the computer and to each other. If this is not the case, go back to [Inspecting the firmware](./../02-ab-writing\03-inspecting-firmware) to re-connect everything.
 
+Now we can return back to the mbed-cli terminal to compile the firmware. To flash the binary file to the Sensortile, we can run the compilation with the flash argument:
+
+```shell
+pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed compile -f
+```
+
+After the compilation output, the command should automatically copy the binary file to the Sensortile and re-connect. The pop-up window with the notification of a removable medium should come up again. Close it.
+
+## Live classification on the Sensortile
+
+Finally, the code should be running on the Sensortile. You can now disconnect the NUCLEO from the computer and the Sensortile.
+
+The firmware will do the following steps:
+
+1. Initialise all peripherals (serial port, accelerometer, timers)
+2. Capture data from the accelerometer for 600 ms at 100 Hz. (if you changed the window length and frequency, this will also be changed automatically)
+3. Extract the features from the raw accelerometer values.
+4. The impulse will be invoked to classify the window with data.
+5. The statistics from classifying the data are shown.
+6. The classification output is shown.
+7. A led is flashing according to the selected output (which letter or status).
+8. Repeat, starting from step 2.
+
+To observe the live classification while you are physically writing text or moving the edge device we can check the terminal output of the Sensortile. This can be done by running the following script in a mbed-cli terminal:
+
+```shell
+mbed term -b 115200 -p /dev/ttyACM*
+```
+
+Replace the **\*** with the correct number of the serial port which your Sensortile is connected with. (you can find this by typing until ACM and press "tab")
+
+If everything goes well, a similar output as below should be visible in the terminal.
 
 ![Classification!](./img/ei_classified_on_microcontroller.png)
+
+We can see the output of the program, where it shows the error output of the classifier (0 means no error), the prediction metrics and the classifier output with the certainty of each label.
+
+# What's next?
+
+This is the end of the workshop. We have performed all the steps required to go from an idea to a working prototype on an edge device. We have inspected the hardware, captured data, extracted features, configured and trained a neural network, deployed to the edge device and classified live data.
+
+You should now be able to create other projects with neural networks on edge devices, adjust the current project to achieve better performance and expand with other functionalities. The possibilities are endless.
