@@ -117,6 +117,8 @@ Type=Application
 Icon=/usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
 EOF
 
+sudo -H chmod +x /home/pi/Desktop/mbed-cli
+
 # Install nodejs
 
 curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
