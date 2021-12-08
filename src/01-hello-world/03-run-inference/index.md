@@ -43,10 +43,6 @@ Now we are ready to run the model on an embedded device. In this case we will ru
 
 The NUCLEO provides Arduino and Morpho compatible headers to make it easy to connect and expand functionality. The microcontroller is a 32bit ARM Cortex M4 with a 80Mhz clock.
 
-<!-- LED for feedback -->
-
-<!-- UART for comms  -->
-
 You can follow along and find the full code of the project on GitHub: [vives-ai-edge/tensorflow-lite-micro-hello-world-mbed](https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbed)
 
 ### Mbed project setup
@@ -55,15 +51,15 @@ In order to get the mbed tool up and running, some configuration must be added t
 
 Executing tensorflow and allocating the model will need memory on the microcontroller. By default mbed-os allocates some memory to the main thread. In order to have enough free memory on the stack, the main stack size might need to be changed. For this example a value of `65kb` is more than enough.
 
-
 ```json
 "config": {
     "main-stack-size": {
         "value": 65536
     }
 },
+```
 
-The application does not need the whole RTOS runtime. The `bare-metal` runtime provides all the needed resources to run the tensorflow library. 
+The application does not need the whole RTOS runtime. The `bare-metal` runtime provides all the needed resources to run the tensorflow library.
 
 Not having the RTOS available means you need to take care of timings and timers yourself. Luckily mbed provides the `events` library as a separate module. This will enable us to use an `EventQueue` that can take care of timed execution of the application.
 
@@ -393,4 +389,3 @@ The terminal shows the output of our firmware, namely the accelerometer ID, thre
 Stop the serial port reading by pressing **ctrl-c**.
 
 This concludes the example in which a Tensorflow model is running on a small microcontroller target.
-
