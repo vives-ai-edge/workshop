@@ -10,7 +10,7 @@ Instead of using mathematical functions to calculate the sine of x we can train 
 
 ## Prerequisites
 
-We are going to use the command line to start a Jupyter-Notebook. Open a terminal by pressing the terminal symbol in the taskbar at the top of you window. **Note: Don't use the mbed-cli terminal icon on the desktop as this will not run the notebook with the correct requirements.**
+We are going to use the command line to start a Jupyter-Notebook. Open a terminal by pressing the terminal symbol in the taskbar at the top of your window. **Note: Don't use the mbed-cli terminal icon on the desktop as this will not run the notebook with the correct requirements.**
 
 Open a Jupyter-Notebook instance using the command line and typing:
 
@@ -29,7 +29,7 @@ It can take some time for Chromium to load the notebook, please be patient and p
 :::
 
 :::tip Installing dependencies
-In the notebook section _Setup Environment_ the tensorflow dependency `tensorflow=2.4.0` is installed. This step might take a long time to complete. I if you are following the workshop on a prepared system, this dependency is already installed for you, and you can skip this step by commenting it out by prepending a `#` character at the beginning of the line.
+In the notebook section _Setup Environment_ the tensorflow dependency `tensorflow=2.4.0` is installed. This step might take a long time to complete. If you are following the workshop on a prepared system, this dependency is already installed for you, and you can skip this step by commenting it out by prepending a `#` character at the beginning of the line.
 
 ```python
 # ! pip install tensorflow==2.4.0
