@@ -4,7 +4,7 @@ Training the model is only the first part. This chapter will explain and show ho
 
 ## mbed
 
-[Arm Mbed](https://os.mbed.com/) is a rapid IoT device development platform. Mbed gives a free and open source IoT operating system with connectivity, security, storage, device management and machine learning. It adopts modern software techniques with free development tools with thousands of code examples and support for hundreds of microcontrollers and development boards.
+[Arm Mbed](https://os.mbed.com/) is a rapid IoT device development platform. Mbed gives a free and open source IoT operating system with connectivity, security, storage, device management and machine learning. It adopts modern software techniques with free development tools, with thousands of code examples and support for hundreds of microcontrollers and development boards.
 
 ### Mbed OS
 
@@ -14,7 +14,7 @@ More information can be found at [os.mbed.com/docs/mbed-os/latest/introduction](
 
 ## Targets
 
-In this example two different development board are targeted. Both targets contain a similar ST ARM Cortex M4 STM32L476 microcontroller but differ in hardware features.
+In this example two different development board are targeted. Both targets contain a similar ST ARM Cortex M4 STM32L476 microcontroller running at a clock rate of 80Mhz but differ in hardware features.
 
 ### Nucleo L476RG
 
@@ -102,7 +102,7 @@ With the `mbed_app.json` settings file configured, the compiler and runtime will
 
 The first thing we need to to is to load the correct libraries for mbed and Tensorflow using `#include`.
 
-This is also the time to load the model using the generated `model.h` file. This files contains the `char array` representation of the model.
+This is also the time to load the model using the generated `model.h` (`model.cc` from last chapter) file. This files contains the `char array` representation of the model.
 
 _Using_ the `tflite` namespace will make the implementation less verbose and easier to read or understand.
 

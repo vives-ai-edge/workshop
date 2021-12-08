@@ -1,6 +1,6 @@
 # Training a Model
 
-For completeness of the documentation we are adding the exactly the same code and information from the hello world example from Tensorflow Lite for Microcontrollers in this section. If you are following this workshop or tutorial and in are testing everything out, we refer to the documentation in the jupyter notebook itself.
+For completeness of the documentation we are adding the exactly the same code and information from the hello world example from Tensorflow Lite for Microcontrollers in this section. If you are following this workshop or tutorial and are testing everything out, we refer to the documentation in the jupyter notebook itself.
 
 # Hello World example from Tensorflow Lite for Microcontrollers
 
