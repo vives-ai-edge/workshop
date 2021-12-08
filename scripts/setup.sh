@@ -43,8 +43,10 @@ sudo apt install libffi-dev -y
 sudo -H pip3 install jupyter
 sudo -H pip3 install pygments==2.4.1
 
+if [ ! -f "/home/pi/.jupyter/jupyter_notebook_config.py" ]; then
 jupyter-notebook --generate-config
 grep -qxF 'c.NotebookApp.open_browser = False' /home/pi/.jupyter/jupyter_notebook_config.py || echo "c.NotebookApp.open_browser = False" >>  /home/pi/.jupyter/jupyter_notebook_config.py
+fi
 
 # Make sure older versions are not installed. Only 2.4.1 is allowed
 if ! (pip3 list | grep "tensorflow.*2\.4\.1" > /dev/null); then
