@@ -39,7 +39,7 @@ To upload new firmware onto the SensorTile, an external SWD debugger (not includ
 
 ## Application
 
-Now we are ready to run the model on an embedded device. In this case we will run the it on a Cortex-M4 microcontroller from ST. The STM42L476RG is provided on a [NUCLEO L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html) development board. We can use the included Stlink v2 debugger to flash the device.
+Now we are ready to run the model on an embedded device. In this case we will run it on a Cortex-M4 microcontroller from ST. The STM42L476RG is provided on a [NUCLEO L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html) development board. We can use the included Stlink v2 debugger to flash the device.
 
 The NUCLEO provides Arduino and Morpho compatible headers to make it easy to connect and expand functionality. The microcontroller is a 32bit ARM Cortex M4 with a 80Mhz clock.
 
@@ -49,7 +49,7 @@ You can follow along and find the full code of the project on GitHub: [vives-ai-
 
 In order to get the mbed tool up and running, some configuration must be added to the project. Mbed uses a `mbed_app.json` file for every project that contain custom configuration for that project. For this example to work we need to add some configuration.
 
-Executing tensorflow and allocating the model will need memory on the microcontroller. By default mbed-os allocates some memory to the main thread. In order to have enough free memory on the stack, the main stack size might need to be changed. For this example a value of `65kb` is more than enough.
+Executing tensorflow and allocating the model will need memory on the microcontroller. By default mbed-os allocates some memory to the main thread. In order to have enough free memory on the stack, the main stack size might need to be changed. For this example a value of `65kB` is more than enough.
 
 ```json
 "config": {
@@ -146,9 +146,9 @@ Now we can use the normal and global `printf` function in our application and co
 
 ### Application constants
 
-The application works by generating a `x` value on every iteration. The `x` must represent value that ranges from 0 to (2 x Pi). So first we need to define Pi and the upper limit value `xrange`. These values where used when training the model.
+The application works by generating an `x` value on every iteration. The `x` must represent value that ranges from 0 to (2 x Pi). So first we need to define Pi and the upper limit value `xrange`. These values where used when training the model.
 
-In order to generate some `x` values, we need to define how many inferences we want in a full cycle. A cycle is includes the full range of 0 to 2 x Pi. In this case we choose to have `100` inferences in a full cycle.
+In order to generate some `x` values, we need to define how many inferences we want in a full cycle. A cycle includes the full range of 0 to 2 x Pi. In this case we choose to have `100` inferences in a full cycle.
 
 The only thing that last is to count the inferences, so we can keep track on what number for `x` to generate next.
 
@@ -267,7 +267,7 @@ void run_once() {
 
 ### Bringing it all together
 
-All parts of the application are now ready to be used. The only thing that rests is to integrate them.
+All parts of the application are now ready to be used. The only thing that remains is to integrate them.
 
 An `AllOpsResolver` instance is declared. This will be used by the interpreter to access the operations that are used in the model. This uses a lot of memory. Since a model will only use a subset of operations, it is recommended that real world applications only load the operations that are actually needed.
 
@@ -379,7 +379,7 @@ When everything is connected, turn on the Sensortile (small switch on the side n
 Now we can return back to the mbed-cli terminal where we compiled the firmware. To flash the binary file to the Sensortile, we can re-run the compilation (this will now run much faster because everything is already there), but with the flash argument:
 
 ```shell
-pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed compile -f
+pi@raspberrypi:~/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed $ mbed compile -f
 ```
 
 After the compilation output, the command should automatically copy the binary file to the Sensortile and re-connect. The pop-up window with the notification of a removable medium should come up again. Close it.
@@ -399,7 +399,7 @@ Nucleo:
 We can now check if the firmware is running correctly on the Sensortile. We can do this by checking the serial output by using a terminal viewer. One could use Putty or TeraTerm on a Windows computer, fortunately the mbed-cli has a terminal viewer built-in! The NUCLEO board will also be connected via a serial port, so to not be confused which port it is, disconnect the NUCLEO device it's USB cable. The serial port can be accessed using the following command:
 
 ```shell
-pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed term -b 115200 -p /dev/ttyACM0
+pi@raspberrypi:~/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed $ mbed term -b 115200 -p /dev/ttyACM0
 ```
 
 Note that two arguments were given to the `term`-command:
@@ -413,10 +413,16 @@ It is possible that your serial port does not correspond with ACM0, but with ACM
 
 The terminal should connect to the Sensortile and give you the following output:
 
-![Serial port output](./img/terminal-data-forwarder.png)
+![Serial port output](./img/putty_result.png)
 
-The terminal shows the output of our firmware, namely the accelerometer ID, three accelerometer values in the setup-part of the main function and the accelerometer values at 100 Hz.
+The terminal shows the output of our firmware, namely the generated value for `x` and the calculated value of `y`.
 
 Stop the serial port reading by pressing **ctrl-c**.
+
+:::tip SerialPlot Visualization (not included in the workshop!)
+Tools such as [SerialPlot](https://github.com/hyOzd/serialplot) enable you to visualize values sent over a serial port. With some small modifications in the `printf()` structure, the values could be visualized in a line chart.
+
+![SerialPlot](./img/serial-plot-output.png)
+:::
 
 This concludes the example in which a Tensorflow model is running on a small microcontroller target.
