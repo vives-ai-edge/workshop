@@ -138,16 +138,16 @@ elif [ -d "/home/pi/workshop-ai-edge" ]; then
   exit -1
 fi
 
-sudo mkdir /home/pi/workshop-ai-edge
-sudo chown pi:pi /home/pi/workshop-ai-edge
+mkdir /home/pi/workshop-ai-edge
+# sudo chown pi:pi /home/pi/workshop-ai-edge
 cd /home/pi/workshop-ai-edge
 
 git clone https://github.com/vives-ai-edge/tensorflow-lite-micro-hello-world-mbed.git
 git clone https://github.com/vives-ai-edge/accelero-data-forwarder.git
 git clone https://github.com/vives-ai-edge/AB-writing-standalone-inference-mbed.git
 
-sudo mkdir /home/pi/workshop-ai-edge/hello-world-jupyter-notebook
-sudo wget https://github.com/tensorflow/tflite-micro/raw/main/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb -P /home/pi/workshop-ai-edge/hello-world-jupyter-notebook
+mkdir /home/pi/workshop-ai-edge/hello-world-jupyter-notebook
+wget https://github.com/tensorflow/tflite-micro/raw/main/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb -P /home/pi/workshop-ai-edge/hello-world-jupyter-notebook
 
 source $HOME/.venv/mbed/bin/activate
 cd /home/pi/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed
