@@ -295,10 +295,15 @@ int main(void) {
 
 ## Building prerequisites
 
+:::warning Workshop
+The following chapter can be ignored when following the workshop. The following instructions are already satisfied in order to save some time during the Workshop.
+If you ran the setup script, all dependencies and configurations should be taken care of as well.
+:::
+
 Before compiling the code, we have to check if the mbed-cli commands are available. We can do this by checking the version:
 
 ```shell
-pi@raspberrypi:~/workshop-ai-edgetensorflow-lite-micro-hello-world-mbed $ mbed --version
+pi@raspberrypi:~/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed $ mbed --version
 ```
 
 The version should be **1.10.5** or higher.
@@ -333,7 +338,9 @@ Now that these settings are set, we can run the following command to compile the
 pi@raspberrypi:~/workshop-ai-edge/tensorflow-lite-micro-hello-world-mbed $ mbed compile
 ```
 
-**Note: the compile will give some warnings on RaspiOS, e.g. missing packages. This is normal and can be ignored. Some packages are not available for the current version of RaspiOS, but we don't need them for this workshop.**
+:::warning Compiler warnings
+The compile will give some warnings on RaspiOS, e.g. missing packages. This is normal and can be ignored. Some packages are not available for the current version of RaspiOS, but we don't need them for this workshop.
+:::
 
 You should see that the compiler will compile all depending libraries and shows the progress using percentages (0.0% to 100.0%). When finished compiling, and image should be created in the `./BUILD/NUCLEO_L476RG/GCC_ARM`-folder named `tensorflow-lite-micro-hello-world-mbed.bin`. This file has to be transferred to the Sensortile.
 
@@ -353,6 +360,18 @@ As a last step, the ribbon cable should be connected in the right way. Two arrow
 
 <img src="./img/nucleo_pin1.jpg" alt="SWD on NUCLEO" height="400"/><img src="./img/sensortile_pin1.jpg" alt="SWD on NUCLEO" height="400"/>
 
+:::tip Nucleo L476 target
+If you would like to run the example on the Nucleo L476 target, you need to comment out the line containing `#define TARGET_SENSORTILE` like illustrated below:
+
+```cpp
+//*** Comment next line out if target IS a sensortile ***//
+// #define TARGET_SENSORTILE
+```
+
+Don't forget the place the two jumpers back in the _NUCLEO_ configuration
+
+:::
+
 ## Flashing the firmware
 
 When everything is connected, turn on the Sensortile (small switch on the side next to the USB connector). If necessary, re-connect the NUCLEO to the Raspberry Pi 400. A pop-up window should notify you that a removable medium has been inserted. You can open the folder or ignore this message. The folder should contain two files: `DETAILS.TXT` and `MBED.HTM`. If this is not the case, check your connections and retry connecting both microcontrollers.
@@ -364,6 +383,16 @@ pi@raspberrypi:~/workshop-ai-edge/accelero-data-forwarder $ mbed compile -f
 ```
 
 After the compilation output, the command should automatically copy the binary file to the Sensortile and re-connect. The pop-up window with the notification of a removable medium should come up again. Close it.
+
+## Blinking leds
+
+Sensortile:
+
+![Hello world on Sensortile](./img/blinky-sensortile.gif)
+
+Nucleo: 
+
+![Hello world on Nucleo](./img/blinky-nucleo.gif)
 
 ## Inspecting the serial output
 
@@ -378,7 +407,9 @@ Note that two arguments were given to the `term`-command:
 - `-b 115200`: Configure the baud rate to be 115.200 baud.
 - `-p /dev/ttyACM0`: Configure the serial port to read on to be `/dev/ttyACM0`.
 
-**Note: It is possible that your serial port does not correspond with ACM0, but with ACM1 (or other). Hint: type in the command until tty and use the tab-key on your keyboard to give the possible ports to connect to. Complete the command with the possible port (ACM\*).**
+:::warning Serial port
+It is possible that your serial port does not correspond with ACM0, but with ACM1 (or other). Hint: type in the command until tty and use the tab-key on your keyboard to give the possible ports to connect to. Complete the command with the possible port (ACM\*).
+:::
 
 The terminal should connect to the Sensortile and give you the following output:
 
