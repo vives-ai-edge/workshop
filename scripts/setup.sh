@@ -179,6 +179,9 @@ mbed config root .
 mbed target NUCLEO_L476RG
 mbed toolchain GCC_ARM
 
+# update for markupsafe version
+python -m pip install markupsafe==2.0.1
+
 echo "-----------------------------------------------------------"
 echo " Done !"
 echo "-----------------------------------------------------------"
