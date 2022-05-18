@@ -128,7 +128,3 @@ We can see the output of the program, where it shows the error output of the cla
 This is the end of the workshop. We have performed all the steps required to go from an idea to a working prototype on an edge device. We have inspected the hardware, captured data, extracted features, configured and trained a neural network, deployed to the edge device and classified live data.
 
 You should now be able to create other projects with neural networks on edge devices, adjust the current project to achieve better performance and expand with other functionalities. The possibilities are endless.
-
-## Export your data
-
-[Shared storage](https://pcordemans.stackstorage.com/s/BYVXSTCfFVw4DHRR)
